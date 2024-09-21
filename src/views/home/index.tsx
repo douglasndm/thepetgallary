@@ -5,7 +5,11 @@ import PhotosList from '@components/listanimals';
 
 import { Container, PageContent, PhotosContainer, PhotosTitleContainer, PhotosTitle } from './styles';
 
-const home: React.FC = () => {
+interface Props {
+  currentView: 'Cat' | 'Dog' | 'Menu';
+}
+
+const home: React.FC<Props> = ({ currentView } : Props) => {
   const photos: NodeRequire[] = [];
 
   for (let i = 0; i < 20; i++) {
@@ -15,19 +19,19 @@ const home: React.FC = () => {
   const ListHeader = useCallback(() => {
     return (
       <>
-        <Header />
+        <Header currentPageTitle={currentView} />
 
         <PhotosTitleContainer>
-            <PhotosTitle>Cuties photos</PhotosTitle>
+            <PhotosTitle>Cuties {currentView} photos</PhotosTitle>
           </PhotosTitleContainer>
       </>
     );
-  }, []);
+  }, [currentView]);
+
   return (
     <Container>
       <PageContent>
         <PhotosContainer>
-
           <PhotosList ListHeaderComponent={ListHeader} images={photos} />
         </PhotosContainer>
       </PageContent>

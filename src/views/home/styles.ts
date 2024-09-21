@@ -9,12 +9,12 @@ export const PageContent = styled.View``;
 
 export const PhotosContainer = styled.View`
     margin: 5px 0;
-    align-items: center;
 `;
 
 export const PhotosTitleContainer = styled.View`
     width: 95%;
     margin-bottom: 15px;
+    margin-left: 15px;
 `;
 
 export const PhotosTitle = styled.Text`
