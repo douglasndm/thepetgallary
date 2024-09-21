@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Header from '@components/header';
 import Padding from '@components/padding';
 
 import { Container, PageContent, PhotosContainer, PhotosTitleContainer, PhotosTitle, PhotosList, Photo } from './styles';
@@ -12,6 +13,8 @@ const home: React.FC = () => {
   }
   return (
     <Container>
+      <Header />
+
       <PageContent>
         <PhotosContainer>
           <PhotosTitleContainer>
