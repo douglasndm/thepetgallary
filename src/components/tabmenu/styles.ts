@@ -11,7 +11,7 @@ export const Content = styled.View`
     background-color: #05D5BA;
     flex-direction: row;
     justify-content: space-around;
-    border-radius: 12px;
+    border-radius: 20px;
     padding: 8px 15px;
 `;
 
@@ -24,13 +24,7 @@ export const Button = styled.TouchableOpacity`
 export const Icon = styled.Image.attrs(() => ({
     tintColor: '#fff',
 }))`
-    width: 30px;
-    height: 28px;
-    margin: 7px;
-`;
-
-export const Text = styled.Text`
-    color: #fff;
-    font-weight: bold;
-    margin-top: 5px;
+    width: 35px;
+    height: 35px;
+    margin: 13px;
 `;

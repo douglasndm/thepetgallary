@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Content, Button, Icon, Text } from './styles';
+import { Container, Content, Button, Icon } from './styles';
 
 const tabmenu: React.FC = () => {
     return (
@@ -8,15 +8,12 @@ const tabmenu: React.FC = () => {
             <Content>
                 <Button>
                     <Icon source={require('../../../assets/images/dog-head.png')} />
-                    <Text>Dogs</Text>
                 </Button>
                 <Button>
                     <Icon source={require('../../../assets/images/cat-head.png')} />
-                    <Text>Cats</Text>
                 </Button>
                 <Button>
                     <Icon source={require('../../../assets/images/navigation-menu-1.png')} />
-                    <Text>More</Text>
                 </Button>
             </Content>
         </Container>
