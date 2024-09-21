@@ -5,10 +5,10 @@ export const Container = styled.View`
     background-color: #FAFAFE;
 `;
 
-export const PageContent = styled.SafeAreaView``;
+export const PageContent = styled.View``;
 
 export const PhotosContainer = styled.View`
-    margin: 5px 20px;
+    margin: 5px 0;
     align-items: center;
 `;
 
@@ -21,15 +21,4 @@ export const PhotosTitle = styled.Text`
     color: #000;
     font-size: 19px;
     font-weight: bold;
-`;
-
-export const PhotosList = styled.FlatList``;
-
-export const Photo = styled.Image`
-    width: 175px;
-    height: 175px;
-
-    background-color: pink;
-    margin: 10px;
-    border-radius: 8px;
 `;

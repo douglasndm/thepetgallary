@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import Header from '@components/header';
-import Padding from '@components/padding';
+import PhotosList from '@components/listanimals';
 
-import { Container, PageContent, PhotosContainer, PhotosTitleContainer, PhotosTitle, PhotosList, Photo } from './styles';
+import { Container, PageContent, PhotosContainer, PhotosTitleContainer, PhotosTitle } from './styles';
 
 const home: React.FC = () => {
   const photos: NodeRequire[] = [];
@@ -11,21 +11,24 @@ const home: React.FC = () => {
   for (let i = 0; i < 20; i++) {
     photos.push(require('@assets/images/FB_IMG_1489097250499.jpg'));
   }
-  return (
-    <Container>
-      <Header />
 
-      <PageContent>
-        <PhotosContainer>
-          <PhotosTitleContainer>
+  const ListHeader = useCallback(() => {
+    return (
+      <>
+        <Header />
+
+        <PhotosTitleContainer>
             <PhotosTitle>Cuties photos</PhotosTitle>
           </PhotosTitleContainer>
-          <PhotosList
-            data={photos}
-            numColumns={2}
-            renderItem={({ item }) => <Photo source={item} />}
-            ListFooterComponent={<Padding />}
-          />
+      </>
+    );
+  }, []);
+  return (
+    <Container>
+      <PageContent>
+        <PhotosContainer>
+
+          <PhotosList ListHeaderComponent={ListHeader} images={photos} />
         </PhotosContainer>
       </PageContent>
     </Container>);
