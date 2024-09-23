@@ -51,6 +51,20 @@ const home: React.FC<Props> = ({ currentView } : Props) => {
         loadData();
     }, [loadData]);
 
+    // Novo useEffect para detectar mudança em `currentView`
+    useEffect(() => {
+        // Função que será chamada quando o `currentView` mudar
+        const handleViewChange = () => {
+            setPage(0);
+            setImages([]);
+            setHasMore(true); // Reseta para poder carregar mais
+            loadData(); // Carrega dados para a nova visualização
+        };
+
+        handleViewChange(); // Chama a função ao detectar mudança
+
+    }, [currentView]); // Coloca `currentView` como dependência para que o efeito seja chamado sempre que mudar
+
     const ListHeader = useCallback(() => {
         return (
         <>
