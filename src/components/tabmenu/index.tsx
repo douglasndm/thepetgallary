@@ -12,14 +12,16 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
         <Container>
             <Content>
                 <Button onPress={() => onPress('Dog')}>
-                    <Icon source={require('../../../assets/images/dog-head.png')} />
+                    <Icon source={require('@assets/images/dog-head.png')} isSelected={currentView === 'Dog'} />
                 </Button>
                 <Button onPress={() => onPress('Cat')}>
-                    <Icon source={require('../../../assets/images/cat-head.png')} />
+                    <Icon source={require('@assets/images/cat-head.png')} isSelected={currentView === 'Cat'} />
                 </Button>
+                {/*}
                 <Button onPress={() => onPress('Menu')}>
-                    <Icon source={require('../../../assets/images/navigation-menu-1.png')} />
+                    <Icon source={require('@assets/images/navigation-menu-1.png')} />
                 </Button>
+                */}
             </Content>
         </Container>
 );

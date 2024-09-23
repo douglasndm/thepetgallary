@@ -21,8 +21,12 @@ export const Button = styled.TouchableOpacity`
     align-items: center;
 `;
 
-export const Icon = styled.Image.attrs(() => ({
-    tintColor: '#fff',
+interface IconProps {
+    isSelected?: boolean;
+}
+
+export const Icon = styled.Image.attrs<IconProps>(({ isSelected }) => ({
+    tintColor: isSelected ? '#000' : '#fff',
 }))`
     width: 35px;
     height: 35px;
