@@ -8,6 +8,7 @@ module.exports = {
           '@app': './src',
           '@assets': './assets',
           '@components': './src/components',
+          '@services': './src/services',
           '@views': './src/views',
           '@utils': './src/utils',
         },
