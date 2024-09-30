@@ -26,7 +26,7 @@ interface IconProps {
 }
 
 export const Icon = styled.Image.attrs<IconProps>(({ isSelected }) => ({
-    tintColor: isSelected ? '#000' : '#fff',
+    tintColor: isSelected ? '#fff' : '#000',
 }))`
     width: 35px;
     height: 35px;

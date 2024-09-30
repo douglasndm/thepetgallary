@@ -10,7 +10,7 @@ const header: React.FC<Props> = ({ currentPageTitle } : Props) => {
     return (
         <Container>
             <TextContainer>
-                <AppTitle>Lovely Animals</AppTitle>
+                <AppTitle>The Pet Gallery</AppTitle>
                 <PageTitle>{currentPageTitle}</PageTitle>
             </TextContainer>
         </Container>
