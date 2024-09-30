@@ -1,6 +1,9 @@
 module.exports = {
     root: true,
-    extends: '@react-native',
+    extends: [
+        '@react-native',
+        '@rocketseat/eslint-config/react'
+    ],
     plugins: [
         'react-hooks',
         'prettier'
