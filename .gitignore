@@ -1,5 +1,8 @@
 .env
 
+android/app/google-services.json
+ios/GoogleService-info.plist
+
 # OSX
 #
 .DS_Store
