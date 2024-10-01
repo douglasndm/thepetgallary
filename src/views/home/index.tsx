@@ -78,7 +78,7 @@ const home: React.FC<Props> = ({ currentView }: Props) => {
 				<Header currentPageTitle={currentView} />
 
 				<PhotosTitleContainer>
-					<PhotosTitle>Cuties {currentView} photos</PhotosTitle>
+					<PhotosTitle>{currentView} photos</PhotosTitle>
 				</PhotosTitleContainer>
 			</>
 		);
