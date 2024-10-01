@@ -1,12 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import LottieView from 'lottie-react-native';
 
-import { Container, Photo } from '../styles';
+import CurrentPhotoContext from '@contexts/currentPhoto';
 
 const dogLoading = require('@animations/dog_loading.lottie');
 const catLoading = require('@animations/cat_loading.lottie');
 
 const demoPic = require('@assets/images/FB_IMG_1489097250499.jpg');
+
+import { Container, Photo } from '../styles';
+import { PhotoContainer } from './styles';
 
 interface Props {
 	item: APIItem;
@@ -16,6 +19,8 @@ interface Props {
 
 const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 	const [isLoading, setIsLoading] = useState(true);
+
+	const photoContext = useContext(CurrentPhotoContext);
 
 	const Loading = useCallback(() => {
 		return (
@@ -43,14 +48,16 @@ const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 
 	const MemorizedImage = useCallback(
 		() => (
-			<Photo
-				source={demoPic}
-				//source={{ uri: item.url }}
-				onLoadStart={onLoadStart}
-				onLoadEnd={onLoadEnd}
-			/>
+			<PhotoContainer onPress={() => photoContext?.setCurrentPhoto(item)}>
+				<Photo
+					//source={demoPic}
+					source={{ uri: item.url }}
+					onLoadStart={onLoadStart}
+					onLoadEnd={onLoadEnd}
+				/>
+			</PhotoContainer>
 		),
-		[item.url]
+		[item, photoContext]
 	);
 
 	return (

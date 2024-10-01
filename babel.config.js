@@ -9,6 +9,7 @@ module.exports = {
 					'@assets': './assets',
 					'@animations': './assets/animations',
 					'@components': './src/components',
+					'@contexts': './src/contexts',
 					'@services': './src/services',
 					'@views': './src/views',
 					'@utils': './src/utils',
@@ -16,4 +17,4 @@ module.exports = {
 			},
 		],
 	],
-}
+};
