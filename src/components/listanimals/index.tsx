@@ -1,34 +1,48 @@
-import React, { useCallback } from 'react';
-import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
+import React from 'react';
+import {
+	FlatList,
+	NativeScrollEvent,
+	NativeSyntheticEvent,
+} from 'react-native';
 
 import Padding from '@components/padding';
 
-import { PhotosList, Photo } from './styles';
+import Image from './image';
 
 interface Props {
-    images: APIItem[];
-    ListHeaderComponent?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ComponentType<any> | null | undefined;
-    onScroll?: ((event: NativeSyntheticEvent<NativeScrollEvent>) => void) | undefined;
+	images: APIItem[];
+	currentView: 'Cat' | 'Dog' | 'Menu';
+	ListHeaderComponent?:
+		| React.ReactElement<any, string | React.JSXElementConstructor<any>>
+		| React.ComponentType<any>
+		| null
+		| undefined;
+	onScroll?:
+		| ((event: NativeSyntheticEvent<NativeScrollEvent>) => void)
+		| undefined;
 }
 
-const listanimals: React.FC<Props> = ({ images, ListHeaderComponent, onScroll }: Props) => {
-
-    const renderItem = useCallback(({ item }: { item: APIItem }) => {
-        return <Photo source={{
-            uri: item.url,
-        }} />;
-    }, []);
-
-    return (
-        <PhotosList
-            data={images}
-            ListHeaderComponent={ListHeaderComponent}
-            numColumns={2}
-            renderItem={renderItem}
-            onScroll={onScroll}
-            ListFooterComponent={<Padding />}
-        />
-    );
+const listanimals: React.FC<Props> = ({
+	images,
+	currentView,
+	ListHeaderComponent,
+	onScroll,
+}: Props) => {
+	return (
+		<FlatList
+			data={images}
+			ListHeaderComponent={ListHeaderComponent}
+			numColumns={2}
+			renderItem={({ item, index }) => (
+				<Image item={item} type={currentView} index={index} />
+			)}
+			onScroll={onScroll}
+			ListFooterComponent={<Padding />}
+			contentContainerStyle={{
+				alignSelf: 'center',
+			}}
+		/>
+	);
 };
 
 export default listanimals;

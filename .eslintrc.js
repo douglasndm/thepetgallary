@@ -5,5 +5,6 @@ module.exports = {
 	rules: {
 		'react-hooks/rules-of-hooks': 'off',
 		'prettier/prettier': 'error',
+		'react-native/no-inline-styles': 'off',
 	},
 };

@@ -1,15 +1,19 @@
 import styled from 'styled-components/native';
 
-export const PhotosList = styled.FlatList`
+export const Container = styled.View`
+	width: 170px;
+	height: 170px;
+
+	margin-bottom: 10px;
+	border-radius: 8px;
+
+	background-color: pink;
+	align-items: center;
 `;
 
 export const Photo = styled.Image`
-    width: 175px;
-    height: 175px;
+	width: 170px;
+	height: 170px;
 
-    flex: 1;
-
-    background-color: pink;
-    margin: 10px;
-    border-radius: 8px;
+	border-radius: 8px;
 `;
