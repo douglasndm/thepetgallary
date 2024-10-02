@@ -79,9 +79,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.lovelyanimals"
+    namespace "dev.douglasndm.thepetgallery"
     defaultConfig {
-        applicationId "com.lovelyanimals"
+        applicationId "dev.douglasndm.thepetgallery"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

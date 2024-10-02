@@ -1,4 +1,4 @@
-package com.lovelyanimals
+package dev.douglasndm.thepetgallery
 
 import android.app.Application
 import com.facebook.react.PackageList

@@ -1,4 +1,4 @@
-package com.lovelyanimals
+package dev.douglasndm.thepetgallery
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
