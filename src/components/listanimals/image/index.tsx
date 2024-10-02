@@ -30,7 +30,7 @@ const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 					width: 170,
 					height: 170,
 					position: 'absolute',
-					backgroundColor: 'pink',
+					backgroundColor: '#f8cdb9',
 					borderRadius: 8,
 				}}
 				autoPlay
