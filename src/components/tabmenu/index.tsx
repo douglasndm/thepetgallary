@@ -30,6 +30,12 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 		navigate('PlacesList', {});
 	}, [navigate, onPress]);
 
+	const navigateMenu = useCallback(() => {
+		onPress('Menu');
+
+		navigate('Menu', {});
+	}, [navigate, onPress]);
+
 	return (
 		<Container>
 			<Content>
@@ -50,6 +56,13 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 					<Icon
 						source={require('@assets/images/pets-hospital.png')}
 						isSelected={currentView === 'Places'}
+					/>
+				</Button>
+
+				<Button onPress={navigateMenu}>
+					<Icon
+						source={require('@assets/images/navigation-menu-1.png')}
+						isSelected={currentView === 'Menu'}
 					/>
 				</Button>
 			</Content>

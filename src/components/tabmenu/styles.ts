@@ -14,7 +14,7 @@ export const Content = styled.View`
 	border-radius: 15px;
 	padding: 5px 15px;
 
-	opacity: 0.95;
+	opacity: 0.9;
 `;
 
 export const Button = styled.TouchableOpacity`
