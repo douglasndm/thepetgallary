@@ -8,7 +8,7 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
-	background-color: #05d5ba;
+	background-color: #f8cdb9;
 	flex-direction: row;
 	justify-content: space-around;
 	border-radius: 15px;
