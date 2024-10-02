@@ -50,8 +50,8 @@ const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 		() => (
 			<PhotoContainer onPress={() => photoContext?.setCurrentPhoto(item)}>
 				<Photo
-					source={demoPic}
-					//source={{ uri: item.url }}
+					//source={demoPic}
+					source={{ uri: item.url }}
 					onLoadStart={onLoadStart}
 					onLoadEnd={onLoadEnd}
 				/>
