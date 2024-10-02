@@ -6,7 +6,14 @@ import Icon from '@react-native-vector-icons/ionicons';
 import Header from '@components/header';
 import Padding from '@components/padding';
 
-import { Container, Content, PlaceButton, PlaceName, styles } from './styles';
+import {
+	Container,
+	Title,
+	Content,
+	PlaceButton,
+	PlaceName,
+	styles,
+} from './styles';
 
 interface PlaceItem {
 	instagram: string;
@@ -52,6 +59,8 @@ const PlacesList: React.FC = () => {
 			<Header />
 
 			<Content>
+				<Title>Lugares para adoção</Title>
+
 				<FlatList
 					data={places}
 					renderItem={renderItem}

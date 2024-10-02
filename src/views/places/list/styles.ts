@@ -14,6 +14,11 @@ export const Container = styled.View`
 	flex: 1;
 `;
 
+export const Title = styled.Text`
+	margin: 0 25px;
+	font-size: 16px;
+`;
+
 export const Content = styled.View``;
 
 export const PlaceButton = styled.TouchableOpacity`
