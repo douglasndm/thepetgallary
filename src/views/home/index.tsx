@@ -80,12 +80,14 @@ const Home: React.FC = () => {
 	}, [viewContext?.currentView]); // Coloca `currentView` como dependência para que o efeito seja chamado sempre que mudar
 
 	const ListHeader = useCallback(() => {
+		const title =
+			viewContext?.currentView === 'Cat' ? 'gatinhos' : 'doguinhos';
 		return (
 			<>
-				<Header currentPageTitle={viewContext?.currentView} />
+				<Header />
 
 				<PhotosTitleContainer>
-					<PhotosTitle>{viewContext?.currentView} photos</PhotosTitle>
+					<PhotosTitle>Fotos de {title}</PhotosTitle>
 				</PhotosTitleContainer>
 			</>
 		);
