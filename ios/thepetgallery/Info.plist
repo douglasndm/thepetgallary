@@ -5,7 +5,7 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>pt-BR</string>
 	<key>CFBundleDisplayName</key>
 	<string>Pet Gallery</string>
 	<key>CFBundleExecutable</key>
@@ -59,7 +59,7 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Precisamos da sua autorização para salvar fotos na sua galeria de imagens</string>
-    <key>NSPhotoLibraryUsageDescription</key>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Precisamos da sua autorização para salvar fotos na sua galeria de imagens</string>
 </dict>
 </plist>
