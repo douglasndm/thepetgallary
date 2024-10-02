@@ -5,11 +5,7 @@ import catLogo from '@animations/cat_logo.lottie';
 
 import { Container, Content, TextContainer, AppTitle } from './styles';
 
-interface Props {
-	currentPageTitle: string;
-}
-
-const header: React.FC<Props> = ({}: Props) => {
+const header: React.FC = () => {
 	const animRef = useRef<LottieView>(null);
 
 	return (
