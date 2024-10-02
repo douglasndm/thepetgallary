@@ -1,30 +1,59 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
+	flex: 1;
+	background-color: #000;
+`;
+
+export const LoadingContainer = styled.View`
+	align-items: center;
+	justify-content: center;
+
 	width: 100%;
 	height: 100%;
-	background-color: #000;
 
-	justify-content: space-between;
+	position: absolute;
+	z-index: 2;
 `;
 
-export const Button = styled.TouchableOpacity`
-	align-self: flex-end;
+export const Loading = styled.ActivityIndicator``;
 
-	margin-right: 10px;
-	margin-top: 35px;
-
+export const CloseButton = styled.TouchableOpacity`
+	top: 40px;
+	right: 15px;
 	padding: 15px;
+
+	position: absolute;
+	z-index: 10;
 `;
 
-export const ButtonText = styled.Text`
+export const CloseButtonText = styled.Text`
 	color: #fff;
 	font-size: 24px;
+`;
+
+export const ImageContainer = styled.View`
+	flex: 1;
+
+	justify-content: center;
+	align-items: center;
 `;
 
 export const Image = styled.Image.attrs(() => ({
 	resizeMode: 'contain',
 }))`
 	width: 100%;
-	flex: 1;
+	height: 75%;
+`;
+
+export const Button = styled.TouchableOpacity`
+	//background-color: #f8cdb9;
+	padding: 15px;
+	border-radius: 12px;
+`;
+
+export const Text = styled.Text`
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
 `;
