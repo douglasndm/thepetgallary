@@ -1,10 +1,19 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+	useCallback,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 
 import { fetchPictures } from '@services/api';
 
+import currentViewContext from '@contexts/currentView';
+
 import Header from '@components/header';
 import PhotosList from '@components/listanimals';
+import PlacesList from '@components/listplaces';
 
 import {
 	Container,
@@ -14,11 +23,9 @@ import {
 	PhotosTitle,
 } from './styles';
 
-interface Props {
-	currentView: 'Cat' | 'Dog' | 'Menu';
-}
+const Home: React.FC = () => {
+	const viewContext = useContext(currentViewContext);
 
-const home: React.FC<Props> = ({ currentView }: Props) => {
 	const [images, setImages] = useState<APIItem[]>([]);
 	const [page, setPage] = useState(0);
 	const [loading, setLoading] = useState(false);
@@ -39,7 +46,7 @@ const home: React.FC<Props> = ({ currentView }: Props) => {
 
 		setLoading(true);
 		try {
-			const type = currentView === 'Cat' ? 'cat' : 'dog';
+			const type = viewContext?.currentView === 'Cat' ? 'cat' : 'dog';
 
 			const response = await fetchPictures({ type, page });
 
@@ -53,7 +60,7 @@ const home: React.FC<Props> = ({ currentView }: Props) => {
 		} finally {
 			setLoading(false);
 		}
-	}, [currentView, hasMore, page]);
+	}, [hasMore, page, viewContext?.currentView]);
 
 	useEffect(() => {
 		loadData();
@@ -70,19 +77,19 @@ const home: React.FC<Props> = ({ currentView }: Props) => {
 		};
 
 		handleViewChange(); // Chama a função ao detectar mudança
-	}, [currentView]); // Coloca `currentView` como dependência para que o efeito seja chamado sempre que mudar
+	}, [viewContext?.currentView]); // Coloca `currentView` como dependência para que o efeito seja chamado sempre que mudar
 
 	const ListHeader = useCallback(() => {
 		return (
 			<>
-				<Header currentPageTitle={currentView} />
+				<Header currentPageTitle={viewContext?.currentView} />
 
 				<PhotosTitleContainer>
-					<PhotosTitle>{currentView} photos</PhotosTitle>
+					<PhotosTitle>{viewContext?.currentView} photos</PhotosTitle>
 				</PhotosTitleContainer>
 			</>
 		);
-	}, [currentView]);
+	}, [viewContext?.currentView]);
 
 	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
 		const { layoutMeasurement, contentOffset, contentSize } =
@@ -100,17 +107,22 @@ const home: React.FC<Props> = ({ currentView }: Props) => {
 	return (
 		<Container>
 			<PageContent>
-				<PhotosContainer>
-					<PhotosList
-						currentView={currentView}
-						ListHeaderComponent={ListHeader}
-						onScroll={handleScroll}
-						images={images}
-					/>
-				</PhotosContainer>
+				{(viewContext?.currentView === `Cat` ||
+					viewContext?.currentView === `Dog`) && (
+					<PhotosContainer>
+						<PhotosList
+							currentView={viewContext.currentView}
+							ListHeaderComponent={ListHeader}
+							onScroll={handleScroll}
+							images={images}
+						/>
+					</PhotosContainer>
+				)}
+
+				{viewContext?.currentView === 'Places' && <PlacesList />}
 			</PageContent>
 		</Container>
 	);
 };
 
-export default home;
+export default Home;

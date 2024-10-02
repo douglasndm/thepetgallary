@@ -1,0 +1,4 @@
+type AppRoutes = {
+	Home: {};
+	PlacesList: {};
+};

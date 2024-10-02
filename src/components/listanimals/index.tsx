@@ -11,7 +11,7 @@ import Image from './image';
 
 interface Props {
 	images: APIItem[];
-	currentView: 'Cat' | 'Dog' | 'Menu';
+	currentView: ICurrentView;
 	ListHeaderComponent?:
 		| React.ReactElement<any, string | React.JSXElementConstructor<any>>
 		| React.ComponentType<any>
