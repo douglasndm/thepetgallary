@@ -4,6 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import Icon from '@react-native-vector-icons/ionicons';
 
 import Header from '@components/header';
+import Loading from '@components/loading';
 import Padding from '@components/padding';
 
 import {
@@ -21,33 +22,36 @@ interface PlaceItem {
 }
 
 const PlacesList: React.FC = () => {
+	const [loading, setLoading] = useState(true);
 	const [places, setPlaces] = useState<PlaceItem[]>([]);
 
 	const loadData = useCallback(async () => {
-		const placesResponse = await firestore()
-			.collection('adoptionsPlaces')
-			.get();
+		try {
+			setLoading(true);
 
-		const localPlaces: PlaceItem[] = [];
+			const placesResponse = await firestore()
+				.collection('adoptionsPlaces')
+				.get();
 
-		placesResponse.forEach(doc => {
-			localPlaces.push(doc.data());
-		});
+			const localPlaces: PlaceItem[] = [];
 
-		setPlaces(localPlaces);
+			placesResponse.forEach(doc => {
+				localPlaces.push(doc.data());
+			});
+
+			setPlaces(localPlaces);
+		} finally {
+			setLoading(false);
+		}
 	}, []);
 
 	useEffect(() => {
 		loadData();
 	}, []);
 
-	const openInstagram = useCallback((url: string) => {
-		Linking.openURL(url);
-	}, []);
-
 	const renderItem: ListRenderItem<PlaceItem> = useCallback(({ item }) => {
 		return (
-			<PlaceButton onPress={() => openInstagram(item.instagram)}>
+			<PlaceButton onPress={() => Linking.openURL(item.instagram)}>
 				<Icon name="logo-instagram" size={30} color="#363535" />
 				<PlaceName>{item.name}</PlaceName>
 			</PlaceButton>
@@ -57,6 +61,8 @@ const PlacesList: React.FC = () => {
 	return (
 		<Container>
 			<Header />
+
+			{loading && <Loading />}
 
 			<Content>
 				<Title>Lugares para adoção</Title>
