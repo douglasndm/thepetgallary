@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>thepetgallery</string>
+	<string>Pet Gallery</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -57,5 +57,9 @@
 	<array>
 		<string>Ionicons.ttf</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Precisamos da sua autorização para salvar fotos na sua galeria de imagens</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+	<string>Precisamos da sua autorização para salvar fotos na sua galeria de imagens</string>
 </dict>
 </plist>

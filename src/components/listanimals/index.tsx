@@ -5,6 +5,7 @@ import {
 	NativeSyntheticEvent,
 } from 'react-native';
 
+import Modal from '@components/modal/image';
 import Padding from '@components/padding';
 
 import Image from './image';
@@ -29,19 +30,22 @@ const listanimals: React.FC<Props> = ({
 	onScroll,
 }: Props) => {
 	return (
-		<FlatList
-			data={images}
-			ListHeaderComponent={ListHeaderComponent}
-			numColumns={2}
-			renderItem={({ item, index }) => (
-				<Image item={item} type={currentView} index={index} />
-			)}
-			onScroll={onScroll}
-			ListFooterComponent={<Padding />}
-			contentContainerStyle={{
-				alignSelf: 'center',
-			}}
-		/>
+		<>
+			<Modal />
+			<FlatList
+				data={images}
+				ListHeaderComponent={ListHeaderComponent}
+				numColumns={2}
+				renderItem={({ item, index }) => (
+					<Image item={item} type={currentView} index={index} />
+				)}
+				onScroll={onScroll}
+				ListFooterComponent={<Padding />}
+				contentContainerStyle={{
+					alignSelf: 'center',
+				}}
+			/>
+		</>
 	);
 };
 

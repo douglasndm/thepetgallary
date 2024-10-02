@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { useNetInfo } from '@react-native-community/netinfo';
+import FlashMessage from 'react-native-flash-message';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
 import CurrentViewContext from '@contexts/currentView';
 
 import TabMenu from '@components/tabmenu';
-import Modal from '@components/modal/image';
 import NoInternet from '@components/NoInternet';
 
 import Routes from './routes';
@@ -27,12 +27,13 @@ const src: React.FC = () => {
 				>
 					{!isInternetReachable && <NoInternet />}
 
-					<Modal />
 					<Routes />
 					<TabMenu
 						currentView={currentView}
 						onPress={setCurrentView}
 					/>
+
+					<FlashMessage duration={7000} statusBarHeight={50} />
 				</CurrentPhotoContext.Provider>
 			</CurrentViewContext.Provider>
 		</NavigationContainer>

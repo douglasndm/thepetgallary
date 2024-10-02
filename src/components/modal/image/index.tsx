@@ -1,9 +1,12 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { Modal } from 'react-native';
-import Share from 'react-native-share';
+import { CameraRoll } from '@react-native-camera-roll/camera-roll';
+import RNFetchBlob from 'rn-fetch-blob';
 import { showMessage } from 'react-native-flash-message';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
+
+import { checkGalleryPermission } from '@utils/permissions/check';
 
 import {
 	CloseButton,
@@ -27,10 +30,32 @@ const image: React.FC = () => {
 	};
 
 	const savePhoto = useCallback(async () => {
+		if (!photoContext?.currentPhoto) {
+			return;
+		}
+
 		try {
-			await Share.open({
-				url: photoContext?.currentPhoto?.url,
+			const { url } = photoContext?.currentPhoto;
+			const extension = url.split('.').pop();
+
+			const hasPermission = await checkGalleryPermission();
+
+			if (!hasPermission) {
+				return;
+			}
+
+			const config = RNFetchBlob.config({
+				fileCache: true,
+				appendExt: extension, // Extensão do arquivo
 			});
+
+			const result = await config.fetch('GET', url);
+
+			await CameraRoll.saveAsset(result.path(), {
+				album: 'The Pet Gallery',
+			});
+
+			photoContext.setCurrentPhoto(null);
 
 			showMessage({
 				message: 'Imagem salva com sucesso!',
@@ -38,13 +63,14 @@ const image: React.FC = () => {
 			});
 		} catch (error) {
 			if (error instanceof Error) {
+				console.error(error);
 				showMessage({
 					message: error.message,
 					type: 'danger',
 				});
 			}
 		}
-	}, [photoContext?.currentPhoto?.url]);
+	}, [photoContext?.currentPhoto]);
 
 	const onLoadEnd = () => {
 		setIsLoading(false);
