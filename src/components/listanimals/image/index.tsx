@@ -31,6 +31,7 @@ const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 					height: 170,
 					position: 'absolute',
 					backgroundColor: 'pink',
+					borderRadius: 8,
 				}}
 				autoPlay
 				loop
