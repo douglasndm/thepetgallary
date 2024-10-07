@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { Modal } from 'react-native';
+import { Modal, Platform } from 'react-native';
 import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import RNFetchBlob from 'rn-fetch-blob';
 import { showMessage } from 'react-native-flash-message';
@@ -104,9 +104,11 @@ const image: React.FC = () => {
 						/>
 					)}
 
-					<Button onPress={savePhoto}>
-						<Text>Salvar</Text>
-					</Button>
+					{Platform.OS === 'ios' && (
+						<Button onPress={savePhoto}>
+							<Text>Salvar</Text>
+						</Button>
+					)}
 				</ImageContainer>
 			</Container>
 		</Modal>
