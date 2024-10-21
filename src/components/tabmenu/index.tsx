@@ -36,6 +36,12 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 		navigate('Menu', {});
 	}, [navigate, onPress]);
 
+	const navigateGame = useCallback(() => {
+		onPress('Game');
+
+		navigate('Unity', {});
+	}, [navigate, onPress]);
+
 	return (
 		<Container>
 			<Content>
@@ -63,6 +69,13 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 					<Icon
 						source={require('@assets/images/navigation-menu-1.png')}
 						isSelected={currentView === 'Menu'}
+					/>
+				</Button>
+
+				<Button onPress={navigateGame}>
+					<Icon
+						source={require('@assets/images/video-game-xbox-controller.png')}
+						isSelected={currentView === 'Game'}
 					/>
 				</Button>
 			</Content>
