@@ -43,8 +43,8 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 	}, [navigate, onPress]);
 
 	return (
-		<Container>
-			<Content>
+		<Container isInGame={currentView === 'Game'}>
+			<Content isInGame={currentView === 'Game'}>
 				<Button onPress={navigateDog}>
 					<Icon
 						source={require('@assets/images/dog-head.png')}
