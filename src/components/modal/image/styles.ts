@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+export const ImageModal = styled.Modal`
+	z-index: 1;
+`;
+
 export const Container = styled.View`
 	flex: 1;
 	background-color: #000;

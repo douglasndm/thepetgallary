@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { Modal, Platform } from 'react-native';
 import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import RNFetchBlob from 'rn-fetch-blob';
-import { showMessage } from 'react-native-flash-message';
+import Modal from 'react-native-modal';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
 
-import { checkGalleryPermission } from '@utils/permissions/check';
+import { requestSavePermission } from '@utils/permissions/check';
 
 import {
 	CloseButton,
@@ -38,7 +38,7 @@ const image: React.FC = () => {
 			const { url } = photoContext?.currentPhoto;
 			const extension = url.split('.').pop();
 
-			const hasPermission = await checkGalleryPermission();
+			const hasPermission = await requestSavePermission();
 
 			if (!hasPermission) {
 				return;
@@ -52,6 +52,7 @@ const image: React.FC = () => {
 			const result = await config.fetch('GET', url);
 
 			await CameraRoll.saveAsset(result.path(), {
+				type: 'photo',
 				album: 'The Pet Gallery',
 			});
 
@@ -81,7 +82,10 @@ const image: React.FC = () => {
 	};
 
 	return (
-		<Modal transparent visible={!!photoContext?.currentPhoto}>
+		<Modal
+			isVisible={!!photoContext?.currentPhoto}
+			onSwipeComplete={() => clearPhoto()}
+		>
 			<Container>
 				<CloseButton onPress={clearPhoto}>
 					<CloseButtonText>X</CloseButtonText>
@@ -104,13 +108,18 @@ const image: React.FC = () => {
 						/>
 					)}
 
-					{Platform.OS === 'ios' && (
-						<Button onPress={savePhoto}>
-							<Text>Salvar</Text>
-						</Button>
-					)}
+					<Button onPress={savePhoto}>
+						<Text>Salvar</Text>
+					</Button>
 				</ImageContainer>
 			</Container>
+
+			<FlashMessage
+				duration={7000}
+				statusBarHeight={50}
+				style={{ zIndex: 100 }}
+				floating
+			/>
 		</Modal>
 	);
 };
