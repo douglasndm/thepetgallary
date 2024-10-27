@@ -1,34 +1,25 @@
-import { Platform } from 'react-native';
-import { showMessage } from 'react-native-flash-message';
-import { check, PERMISSIONS, request, RESULTS } from 'react-native-permissions';
+import { Platform, PermissionsAndroid } from 'react-native';
+import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 
-async function checkGalleryPermission() {
+async function requestSavePermission() {
 	if (Platform.OS === 'android') {
-		const result = await request(
-			PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
-		);
+		// Android: Solicitar permissão para acesso ao armazenamento
+		const result = await request(PERMISSIONS.ANDROID.READ_MEDIA_IMAGES);
 
-		if (result !== RESULTS.GRANTED) {
-			return false;
+		console.log(result);
+
+		if (result === PermissionsAndroid.RESULTS.GRANTED) {
+			return true; // Permissão concedida
 		}
 	} else if (Platform.OS === 'ios') {
-		const granted = await check(PERMISSIONS.IOS.MEDIA_LIBRARY);
+		// iOS: Solicitar permissão para acessar a biblioteca de fotos
+		const result = await request(PERMISSIONS.IOS.PHOTO_LIBRARY);
 
-		if (granted === RESULTS.DENIED) {
-			const result = await request(PERMISSIONS.IOS.MEDIA_LIBRARY);
-
-			if (result === RESULTS.BLOCKED) {
-				showMessage({
-					message:
-						'Aplicativo não tem permissão para salvar na sua biblioteca',
-					type: 'danger',
-				});
-				return false;
-			}
+		if (result === RESULTS.GRANTED) {
+			return true; // Permissão concedida
 		}
 	}
-
-	return true;
+	return false; // Permissão negada
 }
 
-export { checkGalleryPermission };
+export { requestSavePermission };
