@@ -1,5 +1,10 @@
 import { Platform, PermissionsAndroid } from 'react-native';
-import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
+import {
+	PERMISSIONS,
+	request,
+	requestMultiple,
+	RESULTS,
+} from 'react-native-permissions';
 
 async function requestSavePermission() {
 	if (Platform.OS === 'android') {
@@ -13,9 +18,14 @@ async function requestSavePermission() {
 		}
 	} else if (Platform.OS === 'ios') {
 		// iOS: Solicitar permissão para acessar a biblioteca de fotos
-		const result = await request(PERMISSIONS.IOS.PHOTO_LIBRARY);
+		const result = await requestMultiple([
+			PERMISSIONS.IOS.PHOTO_LIBRARY,
+			PERMISSIONS.IOS.PHOTO_LIBRARY_ADD_ONLY,
+		]);
 
-		if (result === RESULTS.GRANTED) {
+		if (
+			result['ios.permission.PHOTO_LIBRARY_ADD_ONLY'] === RESULTS.GRANTED
+		) {
 			return true; // Permissão concedida
 		}
 	}

@@ -41,6 +41,11 @@ const image: React.FC = () => {
 			const hasPermission = await requestSavePermission();
 
 			if (!hasPermission) {
+				showMessage({
+					message:
+						'O aplicativo não tem permissão para salvar arquivos no seu telefone',
+					type: 'danger',
+				});
 				return;
 			}
 
