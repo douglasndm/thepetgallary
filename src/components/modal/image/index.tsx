@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState } from 'react';
+import { Modal } from 'react-native';
 import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import RNFetchBlob from 'rn-fetch-blob';
-import Modal from 'react-native-modal';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
@@ -76,7 +76,7 @@ const image: React.FC = () => {
 				});
 			}
 		}
-	}, [photoContext?.currentPhoto]);
+	}, [photoContext]);
 
 	const onLoadEnd = () => {
 		setIsLoading(false);
@@ -88,7 +88,7 @@ const image: React.FC = () => {
 
 	return (
 		<Modal
-			isVisible={!!photoContext?.currentPhoto}
+			visible={!!photoContext?.currentPhoto}
 			onSwipeComplete={() => clearPhoto()}
 		>
 			<Container>
