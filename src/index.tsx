@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
@@ -24,6 +25,7 @@ const src: React.FC = () => {
 				<CurrentPhotoContext.Provider
 					value={{ currentPhoto, setCurrentPhoto }}
 				>
+					<SystemBars style="dark" hidden={false} />
 					{!isInternetReachable && <NoInternet />}
 
 					<Routes />
