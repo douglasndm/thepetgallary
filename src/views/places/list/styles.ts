@@ -1,25 +1,27 @@
-import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-	ListContent: {
-		margin: 20,
-		backgroundColor: '#f8cdb9',
-		padding: 20,
-		borderRadius: 20,
+export const Container = styled.ScrollView.attrs(() => ({
+	contentInsetAdjustmentBehavior: 'automatic',
+	alwaysBounceVertical: true,
+	contentContainerStyle: {
+		flexGrow: 1,
 	},
-});
-export const Container = styled.View`
+}))`
 	background-color: #fff;
 	flex: 1;
 `;
 
 export const Title = styled.Text`
-	margin: 0 25px;
+	margin: 0px 5px 15px;
 	font-size: 16px;
 `;
 
-export const Content = styled.View``;
+export const Content = styled.View`
+	margin: 20px;
+	background-color: #f8cdb9;
+	padding: 20px;
+	border-radius: 20px;
+`;
 
 export const PlaceButton = styled.TouchableOpacity`
 	margin-bottom: 15px;
