@@ -3074,6 +3074,29 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNSentry (6.6.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Sentry/HybridSDK (= 8.44.0)
+    - Yoga
   - RNShare (12.0.3):
     - DoubleConversion
     - glog
@@ -3095,6 +3118,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - Sentry/HybridSDK (8.44.0)
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
 
@@ -3178,6 +3202,7 @@ DEPENDENCIES:
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -3203,6 +3228,7 @@ SPEC REPOS:
     - lottie-ios
     - nanopb
     - PromisesObjC
+    - Sentry
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -3361,6 +3387,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNShare:
     :path: "../node_modules/react-native-share"
   Yoga:
@@ -3464,7 +3492,9 @@ SPEC CHECKSUMS:
   RNFBFirestore: 077b72bcdc30bed54b7498dbf143f6b8d8742f2c
   RNPermissions: 68f24be3becf17f8b33cda7c72570d36d99a1c8d
   RNScreens: 6a595af73186eb6b85dfd82ded47d67989ae14b5
+  RNSentry: 40501919060a5fda1c6bb82f5a17dd27c46a8705
   RNShare: 54133537253931d7fe37db2886b8133361eb9e25
+  Sentry: 0f9bc9adfc0b960e7f3bb5ec67e9a3d8193f3bdb
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 93a4c16be50e6f29a7ef8e2b19505d7857c651fb
 

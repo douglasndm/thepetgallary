@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+	NavigationContainer,
+	NavigationContainerRef,
+} from '@react-navigation/native';
+import * as Sentry from '@sentry/react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 
@@ -11,14 +15,25 @@ import NoInternet from '@components/NoInternet';
 
 import Routes from './routes';
 
-const src: React.FC = () => {
+const navigationIntegration = Sentry.reactNavigationIntegration({
+	enableTimeToInitialDisplay: true,
+});
+
+const App: React.FC = () => {
+	const containerRef = React.useRef<NavigationContainerRef<AppRoutes>>(null);
+
 	const [currentView, setCurrentView] = useState<ICurrentView>('Dog');
 	const [currentPhoto, setCurrentPhoto] = useState<APIItem | null>(null);
 
 	const { isInternetReachable } = useNetInfo();
 
 	return (
-		<NavigationContainer>
+		<NavigationContainer
+			ref={containerRef}
+			onReady={() => {
+				navigationIntegration.registerNavigationContainer(containerRef);
+			}}
+		>
 			<CurrentViewContext.Provider
 				value={{ currentView, setCurrentView }}
 			>
@@ -39,4 +54,4 @@ const src: React.FC = () => {
 	);
 };
 
-export default src;
+export default App;

@@ -3,7 +3,7 @@
 android/app/google-services.json
 ios/GoogleService-info.plist
 
-unity/builds/**
+sentry.properties
 
 # OSX
 #
