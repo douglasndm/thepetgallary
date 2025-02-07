@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
 	NavigationContainer,
 	NavigationContainerRef,
 } from '@react-navigation/native';
 import * as Sentry from '@sentry/react-native';
+import analytics from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 
@@ -20,19 +21,42 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 });
 
 const App: React.FC = () => {
-	const containerRef = React.useRef<NavigationContainerRef<AppRoutes>>(null);
+	const routeNameRef = React.useRef<string | undefined>(undefined);
+	const navigationRef = React.useRef<NavigationContainerRef<AppRoutes>>(null);
 
 	const [currentView, setCurrentView] = useState<ICurrentView>('Dog');
 	const [currentPhoto, setCurrentPhoto] = useState<APIItem | null>(null);
 
 	const { isInternetReachable } = useNetInfo();
 
+	const onRouteChange = useCallback(async () => {
+		if (__DEV__) return;
+		if (!navigationRef || !navigationRef.current) return;
+
+		const previousRouteName = routeNameRef.current;
+		const currentRouteName = navigationRef.current.getCurrentRoute()?.name;
+
+		if (previousRouteName !== currentRouteName) {
+			await analytics().logScreenView({
+				screen_name: currentRouteName,
+				screen_class: currentRouteName,
+			});
+		}
+
+		if (currentRouteName) {
+			routeNameRef.current = currentRouteName;
+		}
+	}, []);
+
 	return (
 		<NavigationContainer
-			ref={containerRef}
+			ref={navigationRef}
 			onReady={() => {
-				navigationIntegration.registerNavigationContainer(containerRef);
+				navigationIntegration.registerNavigationContainer(
+					navigationRef
+				);
 			}}
+			onStateChange={onRouteChange}
 		>
 			<CurrentViewContext.Provider
 				value={{ currentView, setCurrentView }}
