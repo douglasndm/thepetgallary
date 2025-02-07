@@ -1,37 +1,18 @@
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
-interface ContentProps {
-	isInGame?: boolean;
-}
-
-export const Container = styled.View<ContentProps>`
+export const Container = styled.View`
 	position: absolute;
-	bottom: 40px;
+	bottom: 0;
 	width: 100%;
 	align-items: center;
-
-	${props =>
-		props.isInGame &&
-		css`
-			bottom: 0px;
-		`}
 `;
 
-export const Content = styled.View<ContentProps>`
-	background-color: #f8cdb9;
+export const Content = styled.View`
+	background-color: #ffffff;
 	flex-direction: row;
 	justify-content: space-around;
-	border-radius: 15px;
-	padding: 5px 15px;
-
-	opacity: 0.9;
-
-	${props =>
-		props.isInGame &&
-		css`
-			opacity: 1;
-			height: 90px;
-		`}
+	padding: 5px 15px 25px 15px;
+	width: 100%;
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -45,7 +26,7 @@ interface IconProps {
 }
 
 export const Icon = styled.Image.attrs<IconProps>(({ isSelected }) => ({
-	tintColor: isSelected ? '#fff' : '#000',
+	tintColor: isSelected ? '#5A2FFF' : '#000',
 }))`
 	width: 40px;
 	height: 40px;
