@@ -56,6 +56,22 @@ const Menu: React.FC = () => {
 
 				<AttibuitionContainer>
 					<Attibution>
+						Quer enviar um lugar de adocão ou abrigos que precisam
+						de doação? Entre em contato comigo no LinkedIn{' '}
+						<AttibutionLink
+							onPress={() =>
+								Linking.openURL(
+									'https://www.linkedin.com/in/douglasndm/'
+								)
+							}
+						>
+							aqui
+						</AttibutionLink>
+					</Attibution>
+				</AttibuitionContainer>
+
+				<AttibuitionContainer>
+					<Attibution>
 						Logo de pikisuperstar no{' '}
 						<AttibutionLink
 							onPress={() =>
