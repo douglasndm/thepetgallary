@@ -7,6 +7,7 @@ import * as Sentry from '@sentry/react-native';
 import analytics from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import '@services/firebase/appchecker';
 
@@ -60,22 +61,24 @@ const App: React.FC = () => {
 			}}
 			onStateChange={onRouteChange}
 		>
-			<CurrentViewContext.Provider
-				value={{ currentView, setCurrentView }}
-			>
-				<CurrentPhotoContext.Provider
-					value={{ currentPhoto, setCurrentPhoto }}
+			<SafeAreaProvider>
+				<CurrentViewContext.Provider
+					value={{ currentView, setCurrentView }}
 				>
-					<SystemBars style="dark" hidden={false} />
-					{!isInternetReachable && <NoInternet />}
+					<CurrentPhotoContext.Provider
+						value={{ currentPhoto, setCurrentPhoto }}
+					>
+						<SystemBars style="dark" hidden={false} />
+						{!isInternetReachable && <NoInternet />}
 
-					<Routes />
-					<TabMenu
-						currentView={currentView}
-						onPress={setCurrentView}
-					/>
-				</CurrentPhotoContext.Provider>
-			</CurrentViewContext.Provider>
+						<Routes />
+						<TabMenu
+							currentView={currentView}
+							onPress={setCurrentView}
+						/>
+					</CurrentPhotoContext.Provider>
+				</CurrentViewContext.Provider>
+			</SafeAreaProvider>
 		</NavigationContainer>
 	);
 };

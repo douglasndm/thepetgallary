@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Container, Content, Button, Icon } from './styles';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -11,6 +12,10 @@ interface Props {
 
 const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
+
+	const insets = useSafeAreaInsets();
+
+	console.log(insets);
 
 	const navigateDog = useCallback(() => {
 		onPress('Dog');
@@ -37,8 +42,8 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 	}, [navigate, onPress]);
 
 	return (
-		<Container isInGame={currentView === 'Game'}>
-			<Content isInGame={currentView === 'Game'}>
+		<Container>
+			<Content style={{ paddingBottom: Math.max(insets.bottom, 25) }}>
 				<Button onPress={navigateDog}>
 					<Icon
 						source={require('@assets/images/dog-head.png')}
