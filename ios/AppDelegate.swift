@@ -7,11 +7,9 @@ import Firebase
 @main
 class AppDelegate: RCTAppDelegate {
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    // Inicializa o módulo do AppCheck do RNFirebase
-    // RNFBAppCheckModule.sharedInstance()
-
+      
     FirebaseApp.configure()
-
+      
     self.moduleName = "thepetgallery"
     self.dependencyProvider = RCTAppDependencyProvider()
 

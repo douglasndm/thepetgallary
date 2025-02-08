@@ -3010,18 +3010,18 @@ PODS:
     - React-utils (= 0.77.0)
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNFBAnalytics (21.7.2):
+  - RNFBAnalytics (21.7.4):
     - Firebase/Analytics (= 11.7.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (21.7.2):
+  - RNFBApp (21.7.4):
     - Firebase/CoreOnly (= 11.7.0)
     - React-Core
-  - RNFBAppCheck (21.7.2):
+  - RNFBAppCheck (21.7.4):
     - Firebase/AppCheck (= 11.7.0)
     - React-Core
     - RNFBApp
-  - RNFBFirestore (21.7.2):
+  - RNFBFirestore (21.7.4):
     - Firebase/Firestore (= 11.7.0)
     - React-Core
     - RNFBApp
@@ -3511,10 +3511,10 @@ SPEC CHECKSUMS:
   ReactCodegen: e92a1659b32705bd8ee0d2ba016d6993a4ade05b
   ReactCommon: a02340b2a1a76f3703298a4680bb03277ca87440
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNFBAnalytics: 38a750042b5cf988c61b3e33d1491c182da4b536
-  RNFBApp: a5395f4df3ea5d19697bdc99f5a0400903e5fff6
-  RNFBAppCheck: 0436d36ba19bf5f7ee147721b2b2ce088ce88902
-  RNFBFirestore: 077b72bcdc30bed54b7498dbf143f6b8d8742f2c
+  RNFBAnalytics: a0ba1f59503e343ad03d972421221ffb934195c1
+  RNFBApp: 67d339b258f6741ff2d9aa2d2bb9ba34ac7b7375
+  RNFBAppCheck: 17cec36a9554c7aed0c82d8302f4ebbc329ef698
+  RNFBFirestore: 0a13b1acedd6701c0bd4286dbaea0e9f6a72fe87
   RNPermissions: 68f24be3becf17f8b33cda7c72570d36d99a1c8d
   RNScreens: 6a595af73186eb6b85dfd82ded47d67989ae14b5
   RNSentry: 40501919060a5fda1c6bb82f5a17dd27c46a8705
@@ -3523,6 +3523,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 93a4c16be50e6f29a7ef8e2b19505d7857c651fb
 
-PODFILE CHECKSUM: c37347837133330a3478959a9f8c5aee14bc8901
+PODFILE CHECKSUM: ee713cf22e93616ef9a786b6987edfcc390ac43f
 
 COCOAPODS: 1.16.2
