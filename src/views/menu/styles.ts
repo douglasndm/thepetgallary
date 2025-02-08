@@ -7,7 +7,7 @@ export const Container = styled.ScrollView.attrs(() => ({
 		flexGrow: 1,
 	},
 }))`
-	background-color: #fff;
+	background-color: #e8e8ea;
 `;
 
 export const Content = styled.View`
