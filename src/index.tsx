@@ -11,6 +11,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import '@services/firebase/appchecker';
 
+import '@utils/permissions/notifications';
+
 import CurrentPhotoContext from '@contexts/currentPhoto';
 import CurrentViewContext from '@contexts/currentView';
 
