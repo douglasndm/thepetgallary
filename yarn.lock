@@ -2868,6 +2868,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-firebase/app-check@npm:^21.7.2":
+  version: 21.7.2
+  resolution: "@react-native-firebase/app-check@npm:21.7.2"
+  peerDependencies:
+    "@react-native-firebase/app": 21.7.2
+    expo: ">=47.0.0"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  checksum: 10c0/a34075f14bd7109592ac19e1bb3af7054002a4cad45c0cf1256bd1bad0379fbbdd157d9ed41993a816ad295114ea1b2263ca997319c3ccbd7cdf1e941af7ca07
+  languageName: node
+  linkType: hard
+
 "@react-native-firebase/app@npm:^21.7.2":
   version: 21.7.2
   resolution: "@react-native-firebase/app@npm:21.7.2"
@@ -10999,6 +11012,7 @@ __metadata:
     "@react-native-community/netinfo": "npm:^11.4.1"
     "@react-native-firebase/analytics": "npm:^21.7.2"
     "@react-native-firebase/app": "npm:^21.7.2"
+    "@react-native-firebase/app-check": "npm:^21.7.2"
     "@react-native-firebase/firestore": "npm:^21.7.2"
     "@react-native-vector-icons/common": "npm:^11.0.0"
     "@react-native-vector-icons/ionicons": "npm:^7.4.0"

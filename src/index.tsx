@@ -8,6 +8,8 @@ import analytics from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 
+import '@services/firebase/appchecker';
+
 import CurrentPhotoContext from '@contexts/currentPhoto';
 import CurrentViewContext from '@contexts/currentView';
 
