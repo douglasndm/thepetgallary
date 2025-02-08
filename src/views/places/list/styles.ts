@@ -12,19 +12,34 @@ export const Container = styled.ScrollView.attrs(() => ({
 `;
 
 export const Title = styled.Text`
-	margin: 0px 5px 15px;
-	font-size: 16px;
+	margin: 0px 25px 5px;
+	font-size: 18px;
 `;
 
-export const Content = styled.View`
-	margin: 20px;
+export const Content = styled.View``;
+
+export const PlaceStateContainer = styled.View`
 	background-color: #f8cdb9;
+	margin: 5px 20px;
 	padding: 20px;
 	border-radius: 20px;
 `;
 
+export const PlaceStateText = styled.Text`
+	font-weight: bold;
+	font-size: 18px;
+	color: #fff;
+`;
+
+export const PlaceCityContainer = styled.View``;
+
+export const PlaceCityText = styled.Text`
+	color: rgb(80, 79, 79);
+	margin: 5px 0 0;
+`;
+
 export const PlaceButton = styled.TouchableOpacity`
-	margin-bottom: 15px;
+	margin-top: 10px;
 	padding: 15px;
 	border-radius: 12px;
 
