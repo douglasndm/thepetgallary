@@ -1,16 +1,20 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@app/*": ["src/*"],
-      "@assets/*": ["assets/*"],
-      "@animations/*": ["assets/animations/*"],
-      "@components/*": ["src/components/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@services/*": ["src/services/*"],
-      "@views/*": ["src/views/*"],
-      "@utils/*": ["src/utils/*"],
-    }
-  }
+	"extends": "@react-native/typescript-config/tsconfig.json",
+	"compilerOptions": {
+		"outDir": "./dist",
+		"target": "ESNext",
+		"jsx": "react-native",
+		"moduleResolution": "node",
+		"baseUrl": ".",
+		"paths": {
+			"@app/*": ["src/*"],
+			"@assets/*": ["assets/*"],
+			"@animations/*": ["assets/animations/*"],
+			"@components/*": ["src/components/*"],
+			"@contexts/*": ["src/contexts/*"],
+			"@services/*": ["src/services/*"],
+			"@views/*": ["src/views/*"],
+			"@utils/*": ["src/utils/*"]
+		}
+	}
 }

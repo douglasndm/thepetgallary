@@ -15,8 +15,6 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 
 	const insets = useSafeAreaInsets();
 
-	console.log(insets);
-
 	const navigateDog = useCallback(() => {
 		onPress('Dog');
 

@@ -8,6 +8,7 @@ import analytics from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import FlashMessage from 'react-native-flash-message';
 
 import '@services/firebase/appchecker';
 
@@ -18,6 +19,7 @@ import CurrentViewContext from '@contexts/currentView';
 
 import TabMenu from '@components/tabmenu';
 import NoInternet from '@components/NoInternet';
+import Notifications from './components/notifications';
 
 import Routes from './routes';
 
@@ -72,11 +74,17 @@ const App: React.FC = () => {
 					>
 						<SystemBars style="dark" hidden={false} />
 						{!isInternetReachable && <NoInternet />}
-
+						<Notifications />
 						<Routes />
 						<TabMenu
 							currentView={currentView}
 							onPress={setCurrentView}
+						/>
+
+						<FlashMessage
+							position="top"
+							statusBarHeight={40}
+							duration={6000}
 						/>
 					</CurrentPhotoContext.Provider>
 				</CurrentViewContext.Provider>
