@@ -1,12 +1,34 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import LottieView from 'lottie-react-native';
 
 import catLogo from '@animations/cat_logo.lottie';
 
-import { Container, Content, TextContainer, AppTitle } from './styles';
+import {
+	Container,
+	Content,
+	TextContainer,
+	AppTitle,
+	ButtonIcon,
+	Icon,
+} from './styles';
 
-const header: React.FC = () => {
+const Header: React.FC = () => {
+	const { name } = useRoute<RouteProp<AppRoutes>>();
+	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
+
 	const animRef = useRef<LottieView>(null);
+
+	const isProfile = useMemo(() => {
+		if (name === 'Profile') return true;
+		if (name === 'Login') return true;
+		return false;
+	}, [name]);
+
+	const handleLogin = useCallback(() => {
+		navigate('Login', {});
+	}, [navigate]);
 
 	return (
 		<Container>
@@ -27,8 +49,12 @@ const header: React.FC = () => {
 					loop={false}
 				/>
 			</Content>
+
+			<ButtonIcon onPress={handleLogin}>
+				<Icon name={isProfile ? 'person' : 'person-outline'} />
+			</ButtonIcon>
 		</Container>
 	);
 };
 
-export default header;
+export default Header;

@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Container, Content, Button, Icon, IoniconsIcon } from './styles';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Container, Content, Button, Icon } from './styles';
 
 interface Props {
 	currentView: ICurrentView;
@@ -39,12 +39,6 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 		navigate('Menu', {});
 	}, [navigate, onPress]);
 
-	const navigateLogin = useCallback(() => {
-		onPress('Login');
-
-		navigate('Login', {});
-	}, [navigate, onPress]);
-
 	return (
 		<Container>
 			<Content style={{ paddingBottom: Math.max(insets.bottom, 25) }}>
@@ -72,16 +66,6 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 					<Icon
 						source={require('@assets/images/navigation-menu-1.png')}
 						isSelected={currentView === 'Menu'}
-					/>
-				</Button>
-
-				<Button onPress={navigateLogin}>
-					<IoniconsIcon
-						name={
-							currentView === 'Login'
-								? 'person'
-								: 'person-outline'
-						}
 					/>
 				</Button>
 			</Content>

@@ -23,7 +23,7 @@ interface Props {
 		| undefined;
 }
 
-const listanimals: React.FC<Props> = ({
+const ListAnimals: React.FC<Props> = ({
 	images,
 	currentView,
 	ListHeaderComponent,
@@ -41,12 +41,10 @@ const listanimals: React.FC<Props> = ({
 				)}
 				onScroll={onScroll}
 				ListFooterComponent={<Padding />}
-				contentContainerStyle={{
-					alignSelf: 'center',
-				}}
+				columnWrapperStyle={{ justifyContent: 'center' }}
 			/>
 		</>
 	);
 };
 
-export default listanimals;
+export default ListAnimals;

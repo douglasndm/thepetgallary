@@ -6,8 +6,6 @@ import CurrentPhotoContext from '@contexts/currentPhoto';
 const dogLoading = require('@animations/dog_loading.lottie');
 const catLoading = require('@animations/cat_loading.lottie');
 
-const demoPic = require('@assets/images/FB_IMG_1489097250499.jpg');
-
 import { Container, Photo } from '../styles';
 import { PhotoContainer } from './styles';
 

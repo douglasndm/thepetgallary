@@ -1,12 +1,18 @@
 import styled from 'styled-components/native';
+import Ionicons from '@react-native-vector-icons/ionicons';
 
-export const Container = styled.SafeAreaView``;
+export const Container = styled.SafeAreaView`
+	flex-direction: row;
+	align-items: center;
+	margin-top: 15px;
+	padding: 0 20px;
+`;
 
 export const Content = styled.Pressable`
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
-	margin-top: 20px;
+	flex: 1;
 `;
 
 export const TextContainer = styled.View`
@@ -18,3 +24,9 @@ export const AppTitle = styled.Text`
 	text-align: center;
 	color: #737573;
 `;
+
+export const ButtonIcon = styled.TouchableOpacity``;
+
+export const Icon = styled(Ionicons).attrs(() => ({
+	size: 30,
+}))``;
