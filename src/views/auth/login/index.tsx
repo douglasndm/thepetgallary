@@ -6,7 +6,8 @@ import {
 	appleAuthAndroid,
 	AppleButton,
 } from '@invertase/react-native-apple-authentication';
-import { showMessage } from 'react-native-flash-message';
+
+import { captureException } from '@services/exceptionsHandler';
 
 import {
 	signInWithApple,
@@ -38,13 +39,10 @@ const Login: React.FC = () => {
 
 			await signInWithGoogle();
 		} catch (error) {
-			console.log(error);
-			if (error instanceof Error) {
-				showMessage({
-					message: error.message,
-					type: 'warning',
-				});
-			}
+			captureException({
+				error,
+				showAlert: true,
+			});
 		} finally {
 			setIsSigning(false);
 		}
@@ -60,12 +58,10 @@ const Login: React.FC = () => {
 				await signInWithApple();
 			}
 		} catch (error) {
-			if (error instanceof Error) {
-				showMessage({
-					message: error.message,
-					type: 'warning',
-				});
-			}
+			captureException({
+				error,
+				showAlert: true,
+			});
 		} finally {
 			setIsSigning(false);
 		}

@@ -75,17 +75,15 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 					/>
 				</Button>
 
-				{__DEV__ && (
-					<Button onPress={navigateLogin}>
-						<IoniconsIcon
-							name={
-								currentView === 'Login'
-									? 'person'
-									: 'person-outline'
-							}
-						/>
-					</Button>
-				)}
+				<Button onPress={navigateLogin}>
+					<IoniconsIcon
+						name={
+							currentView === 'Login'
+								? 'person'
+								: 'person-outline'
+						}
+					/>
+				</Button>
 			</Content>
 		</Container>
 	);
