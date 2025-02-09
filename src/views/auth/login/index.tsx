@@ -1,5 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Text, Platform } from 'react-native';
+import { Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import auth from '@react-native-firebase/auth';
 import {
 	appleAuth,
@@ -30,8 +32,9 @@ import {
 } from './styles';
 
 const Login: React.FC = () => {
+	const { replace } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
+
 	const [isSigning, setIsSigning] = useState(false);
-	const [cUser, setCUser] = useState('');
 
 	const signInGoogle = useCallback(async () => {
 		try {
@@ -70,11 +73,10 @@ const Login: React.FC = () => {
 	useEffect(() => {
 		auth().onAuthStateChanged(user => {
 			if (user) {
-				setCUser(JSON.stringify(user));
+				replace('Profile', {});
 			}
-			console.log('current user: ' + user);
 		});
-	}, []);
+	}, [replace]);
 
 	return (
 		<Container>
@@ -118,8 +120,6 @@ const Login: React.FC = () => {
 						</LoginButton>
 					</LoginContainer>
 				)}
-
-				<Text>{cUser}</Text>
 			</PageContent>
 		</Container>
 	);

@@ -3,4 +3,5 @@ type AppRoutes = {
 	PlacesList: {};
 	Menu: {};
 	Login: {};
+	Profile: {};
 };
