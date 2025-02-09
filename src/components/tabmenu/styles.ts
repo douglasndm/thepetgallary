@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import Ionicons from '@react-native-vector-icons/ionicons';
 
 export const Container = styled.View`
 	position: absolute;
@@ -32,3 +33,7 @@ export const Icon = styled.Image.attrs<IconProps>(({ isSelected }) => ({
 	height: 40px;
 	margin: 13px;
 `;
+
+export const IoniconsIcon = styled(Ionicons).attrs(() => ({
+	size: 36,
+}))``;

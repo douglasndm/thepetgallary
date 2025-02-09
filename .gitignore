@@ -11,6 +11,9 @@ sentry.properties
 
 # Xcode
 #
+# react-native-config codegen
+ios/tmp.xcconfig
+
 build/
 *.pbxuser
 !default.pbxuser

@@ -10,6 +10,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		1FA9B8057CD65BCF3860FA97 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 9E185A6B2CA6A99B41DA521B /* PrivacyInfo.xcprivacy */; };
 		4F02BCAA2CACA81200872FDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F02BCA92CACA81200872FDD /* GoogleService-Info.plist */; };
+		4F3C148C2D58A87300F7E03F /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4F3C148B2D58A87300F7E03F /* Config.xcconfig */; };
 		4FF977132D57F92600D78955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF977122D57F92600D78955 /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FB4D946DE3036CBC6342B08E /* Pods_thepetgallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A07FA0C94ADDB90099A12FC /* Pods_thepetgallery.framework */; };
@@ -23,6 +24,7 @@
 		3A07FA0C94ADDB90099A12FC /* Pods_thepetgallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thepetgallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F02BCA92CACA81200872FDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3C14892D58053C00F7E03F /* thepetgallery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = thepetgallery.entitlements; path = thepetgallery/thepetgallery.entitlements; sourceTree = "<group>"; };
+		4F3C148B2D58A87300F7E03F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = thepetgallery/Config.xcconfig; sourceTree = "<group>"; };
 		4FCBCFCA2D5672F100C25E36 /* thepetgallery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "thepetgallery-Bridging-Header.h"; sourceTree = "<group>"; };
 		4FF977122D57F92600D78955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		780F641C570CF03ADA629EBA /* Pods-thepetgallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thepetgallery.release.xcconfig"; path = "Target Support Files/Pods-thepetgallery/Pods-thepetgallery.release.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				9E185A6B2CA6A99B41DA521B /* PrivacyInfo.xcprivacy */,
 				4FCBCFCA2D5672F100C25E36 /* thepetgallery-Bridging-Header.h */,
+				4F3C148B2D58A87300F7E03F /* Config.xcconfig */,
 			);
 			name = thepetgallery;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				4F3C148C2D58A87300F7E03F /* Config.xcconfig in Resources */,
 				4F02BCAA2CACA81200872FDD /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				1FA9B8057CD65BCF3860FA97 /* PrivacyInfo.xcprivacy in Resources */,
@@ -374,6 +378,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F3C148B2D58A87300F7E03F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CC = "";
@@ -456,7 +461,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -466,6 +474,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F3C148B2D58A87300F7E03F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CC = "";
@@ -540,7 +549,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

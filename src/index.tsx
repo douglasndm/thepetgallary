@@ -9,6 +9,7 @@ import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FlashMessage from 'react-native-flash-message';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import '@services/firebase/appchecker';
 
@@ -22,6 +23,8 @@ import NoInternet from '@components/NoInternet';
 import Notifications from './components/notifications';
 
 import Routes from './routes';
+
+GoogleSignin.configure();
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
 	enableTimeToInitialDisplay: true,

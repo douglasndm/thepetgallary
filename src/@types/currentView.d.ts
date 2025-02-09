@@ -1,1 +1,1 @@
-type ICurrentView = 'Cat' | 'Dog' | 'Places' | 'Menu' | 'Game';
+type ICurrentView = 'Cat' | 'Dog' | 'Places' | 'Menu' | 'Login';
