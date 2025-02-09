@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Text, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 import Header from '@components/header';
+import Button from '@components/button';
 
-import { Container } from './styles';
+import { Container, Content, Name, Email } from './styles';
 
 const Profile: React.FC = () => {
 	const { replace } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
@@ -29,9 +29,12 @@ const Profile: React.FC = () => {
 		<Container>
 			<Header />
 
-			{!!user && <Text>{JSON.stringify(user)}</Text>}
+			<Content>
+				<Name>{user?.displayName}</Name>
+				<Email>{user?.email}</Email>
 
-			<Button title="Logout" onPress={handleLogout} />
+				<Button title="Sair da conta" onPress={handleLogout} />
+			</Content>
 		</Container>
 	);
 };
