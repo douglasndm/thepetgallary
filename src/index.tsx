@@ -4,6 +4,7 @@ import {
 	NavigationContainerRef,
 } from '@react-navigation/native';
 import * as Sentry from '@sentry/react-native';
+import EnvConfig from 'react-native-config';
 import analytics from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
@@ -24,7 +25,9 @@ import Notifications from './components/notifications';
 
 import Routes from './routes';
 
-GoogleSignin.configure();
+GoogleSignin.configure({
+	webClientId: EnvConfig.GOOGLE_CLIENT_ID_ANDROID,
+});
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
 	enableTimeToInitialDisplay: true,

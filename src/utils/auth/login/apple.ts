@@ -1,5 +1,10 @@
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { appleAuth } from '@invertase/react-native-apple-authentication';
+import {
+	appleAuth,
+	appleAuthAndroid,
+} from '@invertase/react-native-apple-authentication';
+import 'react-native-get-random-values';
+import { v4 as uuid } from 'uuid';
 
 async function signInWithApple(): Promise<FirebaseAuthTypes.UserCredential> {
 	// Start the sign-in request
@@ -26,4 +31,49 @@ async function signInWithApple(): Promise<FirebaseAuthTypes.UserCredential> {
 	return auth().signInWithCredential(appleCredential);
 }
 
-export { signInWithApple };
+async function signInWithAppleAndroid(): Promise<FirebaseAuthTypes.UserCredential> {
+	// Generate secure, random values for state and nonce
+	const rawNonce = uuid();
+	const state = uuid();
+
+	// Configure the request
+	appleAuthAndroid.configure({
+		// The Service ID you registered with Apple
+		clientId: 'dev.douglasndm.thepetgallery.android',
+
+		// Return URL added to your Apple dev console. We intercept this redirect, but it must still match
+		// the URL you provided to Apple. It can be an empty route on your backend as it's never called.
+		redirectUri:
+			'https://the-pet-gallery-48ac6.firebaseapp.com/__/auth/handler',
+
+		// The type of response requested - code, id_token, or both.
+		responseType: appleAuthAndroid.ResponseType.ALL,
+
+		// The amount of user information requested from Apple.
+		scope: appleAuthAndroid.Scope.ALL,
+
+		// Random nonce value that will be SHA256 hashed before sending to Apple.
+		nonce: rawNonce,
+
+		// Unique state value used to prevent CSRF attacks. A UUID will be generated if nothing is provided.
+		state,
+	});
+
+	// Open the browser window for user sign in
+	const response = await appleAuthAndroid.signIn();
+
+	// Send the authorization code to your backend for verification
+	// Create a Firebase credential from the response
+	const { id_token, nonce } = response;
+
+	if (!id_token) {
+		throw new Error('Apple Sign-In failed - no identify token returned');
+	}
+
+	const appleCredential = auth.AppleAuthProvider.credential(id_token, nonce);
+
+	// Sign the user in with the credential
+	return auth().signInWithCredential(appleCredential);
+}
+
+export { signInWithApple, signInWithAppleAndroid };

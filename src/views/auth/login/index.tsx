@@ -1,9 +1,17 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { Text, Platform } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { AppleButton } from '@invertase/react-native-apple-authentication';
+import {
+	appleAuth,
+	appleAuthAndroid,
+	AppleButton,
+} from '@invertase/react-native-apple-authentication';
 import { showMessage } from 'react-native-flash-message';
 
-import { signInWithApple } from '@utils/auth/login/apple';
+import {
+	signInWithApple,
+	signInWithAppleAndroid,
+} from '@utils/auth/login/apple';
 import { signInWithGoogle } from '@utils/auth/login/google';
 
 import GoogleButtonSVG from '@assets/images/buttons/signin/google_pt-br.svg';
@@ -22,6 +30,7 @@ import {
 
 const Login: React.FC = () => {
 	const [isSigning, setIsSigning] = useState(false);
+	const [cUser, setCUser] = useState('');
 
 	const signInGoogle = useCallback(async () => {
 		try {
@@ -29,6 +38,7 @@ const Login: React.FC = () => {
 
 			await signInWithGoogle();
 		} catch (error) {
+			console.log(error);
 			if (error instanceof Error) {
 				showMessage({
 					message: error.message,
@@ -44,7 +54,11 @@ const Login: React.FC = () => {
 		try {
 			setIsSigning(true);
 
-			await signInWithApple();
+			if (Platform.OS === 'android') {
+				await signInWithAppleAndroid();
+			} else {
+				await signInWithApple();
+			}
 		} catch (error) {
 			if (error instanceof Error) {
 				showMessage({
@@ -59,6 +73,9 @@ const Login: React.FC = () => {
 
 	useEffect(() => {
 		auth().onAuthStateChanged(user => {
+			if (user) {
+				setCUser(JSON.stringify(user));
+			}
 			console.log('current user: ' + user);
 		});
 	}, []);
@@ -87,20 +104,26 @@ const Login: React.FC = () => {
 					<Loading />
 				) : (
 					<LoginContainer>
-						<AppleButton
-							buttonStyle={AppleButton.Style.BLACK}
-							buttonType={AppleButton.Type.CONTINUE}
-							style={{
-								width: 160,
-								height: 45,
-							}}
-							onPress={signInApple}
-						/>
+						{(appleAuthAndroid.isSupported ||
+							appleAuth.isSupported) && (
+							<AppleButton
+								buttonStyle={AppleButton.Style.BLACK}
+								buttonType={AppleButton.Type.CONTINUE}
+								style={{
+									width: 160,
+									height: 45,
+								}}
+								onPress={signInApple}
+							/>
+						)}
+
 						<LoginButton onPress={signInGoogle}>
 							<GoogleButtonSVG width={160} height={45} />
 						</LoginButton>
 					</LoginContainer>
 				)}
+
+				<Text>{cUser}</Text>
 			</PageContent>
 		</Container>
 	);
