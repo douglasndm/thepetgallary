@@ -6,6 +6,7 @@ export const Content = styled.Pressable`
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
+	margin-top: 20px;
 `;
 
 export const TextContainer = styled.View`

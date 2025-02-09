@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import Ionicons from '@react-native-vector-icons/ionicons';
 
 export const Container = styled.View`
@@ -17,7 +18,7 @@ export const Content = styled.View`
 `;
 
 export const Button = styled.TouchableOpacity`
-	width: 80px;
+	width: ${(Dimensions.get('window').width - 50) / 5}px;
 	justify-content: center;
 	align-items: center;
 `;
