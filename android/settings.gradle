@@ -5,5 +5,3 @@ rootProject.name = 'thepetgallery'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
 
-include ':unityLibrary'
-project(':unityLibrary').projectDir=new File('..\\unity\\builds\\android\\unityLibrary')

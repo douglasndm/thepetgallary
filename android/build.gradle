@@ -23,12 +23,4 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        flatDir {
-            dirs "${project(':unityLibrary').projectDir}/libs"
-        }
-    }
-}
-
 apply plugin: "com.facebook.react.rootproject"
