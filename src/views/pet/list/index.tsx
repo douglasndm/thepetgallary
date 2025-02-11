@@ -38,7 +38,10 @@ const PetList: React.FC = () => {
 
 				petsSnapshot.forEach(doc => {
 					const pet = doc.data() as IPet;
-					localPets.push(pet);
+					localPets.push({
+						...pet,
+						id: doc.id,
+					});
 				});
 
 				setPets(localPets);

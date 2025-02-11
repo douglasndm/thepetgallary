@@ -2,9 +2,11 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import data from '@services/data.json';
+import { getUserPetsReference } from '@services/firebase/firestore';
+import { captureException } from '@services/exceptionsHandler';
 
 import Header from '@components/header';
+import Loading from '@components/loading';
 
 import {
 	Container,
@@ -25,13 +27,37 @@ const PetDetails: React.FC = () => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
 	const { params } = useRoute<RouteProp<AppRoutes, 'PetDetails'>>();
 
+	const [isLoading, setIsLoading] = useState(true);
 	const [petInfo, setPetInfo] = useState<IPet>();
 
-	useEffect(() => {
-		const pet = data.find(item => item.id === params.id);
+	const loadData = useCallback(async () => {
+		try {
+			setIsLoading(true);
+			const petsReference = await getUserPetsReference();
 
-		setPetInfo(pet);
+			if (petsReference) {
+				const petsSnapshot = await petsReference.doc(params.id).get();
+
+				if (petsSnapshot.exists) {
+					const pet = petsSnapshot.data() as IPet;
+					setPetInfo({ ...pet, id: petsSnapshot.id });
+				}
+			}
+		} catch (error) {
+			if (error instanceof Error) {
+				if (error.message.includes('firestore/permission-denied')) {
+					return;
+				}
+			}
+			captureException({ error, showAlert: true });
+		} finally {
+			setIsLoading(false);
+		}
 	}, [params.id]);
+
+	useEffect(() => {
+		loadData();
+	}, []);
 
 	const iconName = useMemo(() => {
 		if (petInfo?.species) {
@@ -67,35 +93,45 @@ const PetDetails: React.FC = () => {
 		<Container>
 			<Header />
 
-			<ActionButtonContainer onPress={navigateToEditPet}>
-				<ActionButtonIcon name="create-outline" />
-				<ActionButtonText>Editar pet</ActionButtonText>
-			</ActionButtonContainer>
+			{!isLoading && (
+				<ActionButtonContainer onPress={navigateToEditPet}>
+					<ActionButtonIcon name="create-outline" />
+					<ActionButtonText>Editar pet</ActionButtonText>
+				</ActionButtonContainer>
+			)}
 
-			<Content>
-				{!!iconName && <Icon name={iconName} />}
+			{isLoading ? (
+				<Loading />
+			) : (
+				<Content>
+					{!!iconName && <Icon name={iconName} />}
 
-				<Name>{petInfo?.name}</Name>
+					<Name>{petInfo?.name}</Name>
 
-				{petInfo?.species && (
-					<Species>
-						Especie:{' '}
-						{petInfo?.species === 'dog' ? 'Cachorro' : 'Gato'}
-					</Species>
-				)}
+					{petInfo?.species && (
+						<Species>
+							Especie:{' '}
+							{petInfo?.species === 'dog' ? 'Cachorro' : 'Gato'}
+						</Species>
+					)}
 
-				{petInfo?.breed && <Breed>Raça: {petInfo?.breed}</Breed>}
+					{petInfo?.breed && <Breed>Raça: {petInfo?.breed}</Breed>}
 
-				{birthDate && <BirthDate>Nascimento: {birthDate}</BirthDate>}
+					{birthDate && (
+						<BirthDate>Nascimento: {birthDate}</BirthDate>
+					)}
 
-				{petInfo?.weight && <Weight>Peso: {petInfo?.weight}KG</Weight>}
+					{petInfo?.weight && (
+						<Weight>Peso: {petInfo?.weight}KG</Weight>
+					)}
 
-				{petInfo?.health_notes && (
-					<HealthNotes>
-						Dados adicionais: {petInfo?.health_notes}
-					</HealthNotes>
-				)}
-			</Content>
+					{petInfo?.health_notes && (
+						<HealthNotes>
+							Dados adicionais: {petInfo?.health_notes}
+						</HealthNotes>
+					)}
+				</Content>
+			)}
 		</Container>
 	);
 };

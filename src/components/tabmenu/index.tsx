@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import auth from '@react-native-firebase/auth';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Container, Content, Button, Icon, MaterialIcons } from './styles';
@@ -33,8 +34,8 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 		navigate('PlacesList', {});
 	}, [navigate, onPress]);
 
-	const navigateVaccines = useCallback(() => {
-		onPress('Vaccines');
+	const navigatePetList = useCallback(() => {
+		onPress('PetList');
 
 		navigate('PetList', {});
 	}, [navigate, onPress]);
@@ -68,12 +69,14 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 					/>
 				</Button>
 
-				<Button onPress={navigateVaccines}>
-					<MaterialIcons
-						name="needle"
-						isSelected={currentView === 'Vaccines'}
-					/>
-				</Button>
+				{auth().currentUser && (
+					<Button onPress={navigatePetList}>
+						<MaterialIcons
+							name="needle"
+							isSelected={currentView === 'PetList'}
+						/>
+					</Button>
+				)}
 
 				<Button onPress={navigateMenu}>
 					<Icon
