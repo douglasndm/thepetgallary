@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
 export const Container = styled.View`
 	position: absolute;
@@ -33,3 +34,10 @@ export const Icon = styled.Image.attrs<IconProps>(({ isSelected }) => ({
 	height: 40px;
 	margin: 13px;
 `;
+
+export const MaterialIcons = styled(MaterialDesignIcons).attrs<IconProps>(
+	({ isSelected }) => ({
+		color: isSelected ? '#5A2FFF' : '#000',
+		size: 35,
+	})
+)``;

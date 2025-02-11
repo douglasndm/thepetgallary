@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Container, Content, Button, Icon } from './styles';
+import { Container, Content, Button, Icon, MaterialIcons } from './styles';
 
 interface Props {
 	currentView: ICurrentView;
@@ -33,6 +33,12 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 		navigate('PlacesList', {});
 	}, [navigate, onPress]);
 
+	const navigateVaccines = useCallback(() => {
+		onPress('Vaccines');
+
+		navigate('PetList', {});
+	}, [navigate, onPress]);
+
 	const navigateMenu = useCallback(() => {
 		onPress('Menu');
 
@@ -59,6 +65,13 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 					<Icon
 						source={require('@assets/images/pets-hospital.png')}
 						isSelected={currentView === 'Places'}
+					/>
+				</Button>
+
+				<Button onPress={navigateVaccines}>
+					<MaterialIcons
+						name="needle"
+						isSelected={currentView === 'Vaccines'}
 					/>
 				</Button>
 

@@ -9,6 +9,7 @@ import analytics from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { PaperProvider } from 'react-native-paper';
 import FlashMessage from 'react-native-flash-message';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
@@ -72,28 +73,30 @@ const App: React.FC = () => {
 			onStateChange={onRouteChange}
 		>
 			<SafeAreaProvider>
-				<CurrentViewContext.Provider
-					value={{ currentView, setCurrentView }}
-				>
-					<CurrentPhotoContext.Provider
-						value={{ currentPhoto, setCurrentPhoto }}
+				<PaperProvider>
+					<CurrentViewContext.Provider
+						value={{ currentView, setCurrentView }}
 					>
-						<SystemBars style="dark" hidden={false} />
-						{!isInternetReachable && <NoInternet />}
-						<Notifications />
-						<Routes />
-						<TabMenu
-							currentView={currentView}
-							onPress={setCurrentView}
-						/>
+						<CurrentPhotoContext.Provider
+							value={{ currentPhoto, setCurrentPhoto }}
+						>
+							<SystemBars style="dark" hidden={false} />
+							{!isInternetReachable && <NoInternet />}
+							<Notifications />
+							<Routes />
+							<TabMenu
+								currentView={currentView}
+								onPress={setCurrentView}
+							/>
 
-						<FlashMessage
-							position="top"
-							statusBarHeight={40}
-							duration={6000}
-						/>
-					</CurrentPhotoContext.Provider>
-				</CurrentViewContext.Provider>
+							<FlashMessage
+								position="top"
+								statusBarHeight={40}
+								duration={6000}
+							/>
+						</CurrentPhotoContext.Provider>
+					</CurrentViewContext.Provider>
+				</PaperProvider>
 			</SafeAreaProvider>
 		</NavigationContainer>
 	);

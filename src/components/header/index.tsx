@@ -16,7 +16,8 @@ import {
 
 const Header: React.FC = () => {
 	const { name } = useRoute<RouteProp<AppRoutes>>();
-	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
+	const { navigate, canGoBack, goBack } =
+		useNavigation<NativeStackNavigationProp<AppRoutes>>();
 
 	const animRef = useRef<LottieView>(null);
 
@@ -32,6 +33,12 @@ const Header: React.FC = () => {
 
 	return (
 		<Container>
+			{canGoBack() && (
+				<ButtonIcon onPress={goBack}>
+					<Icon name="arrow-back" />
+				</ButtonIcon>
+			)}
+
 			<Content onPress={() => animRef.current?.play()}>
 				<TextContainer>
 					<AppTitle>The Pet Gallery</AppTitle>

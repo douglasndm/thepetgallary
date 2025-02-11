@@ -7,6 +7,13 @@ import Menu from '@views/menu';
 import Login from '@views/auth/login';
 import Profile from '@views/profile';
 
+import PetList from '@views/pet/list';
+import PetAdd from '@views/pet/add';
+import PetEdit from '@views/pet/edit';
+import PetDetails from '@views/pet/details';
+
+import Vaccines from '@views/vaccines';
+
 const Stack = createNativeStackNavigator<AppRoutes>();
 
 const routes: React.FC = () => {
@@ -17,6 +24,13 @@ const routes: React.FC = () => {
 			<Stack.Screen name="Menu" component={Menu} />
 			<Stack.Screen name="Login" component={Login} />
 			<Stack.Screen name="Profile" component={Profile} />
+
+			<Stack.Screen name="PetList" component={PetList} />
+			<Stack.Screen name="PetAdd" component={PetAdd} />
+			<Stack.Screen name="PetEdit" component={PetEdit} />
+			<Stack.Screen name="PetDetails" component={PetDetails} />
+
+			<Stack.Screen name="Vaccines" component={Vaccines} />
 		</Stack.Navigator>
 	);
 };

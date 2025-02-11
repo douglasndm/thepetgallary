@@ -1,0 +1,136 @@
+[
+	{
+		"id": "1",
+		"name": "Rex",
+		"breed": "Labrador",
+		"birth_date": "2018-05-12",
+		"weight": 28.5,
+		"health_notes": "Alergia a certos tipos de ração."
+	},
+	{
+		"id": "2",
+		"name": "Mimi",
+		"species": "cat",
+		"breed": "Siamês",
+		"birth_date": "2019-08-25",
+		"weight": 4.2,
+		"health_notes": "Necessita de acompanhamento renal."
+	},
+	{
+		"id": "3",
+		"name": "Thor",
+		"species": "dog",
+		"breed": "Bulldog Francês",
+		"birth_date": "2020-02-15",
+		"weight": 12.0,
+		"health_notes": "Problemas respiratórios."
+	},
+	{
+		"id": "4",
+		"name": "Luna",
+		"species": "cat",
+		"breed": "Persa",
+		"birth_date": "2017-11-30",
+		"weight": 5.5,
+		"health_notes": "Pelo longo, necessita de escovação diária."
+	},
+	{
+		"id": "5",
+		"name": "Max",
+		"species": "dog",
+		"breed": "Golden Retriever",
+		"birth_date": "2016-07-22",
+		"weight": 32.0,
+		"health_notes": "Artrite leve, em tratamento."
+	},
+	{
+		"id": "6",
+		"name": "Bella",
+		"species": "cat",
+		"breed": "Maine Coon",
+		"birth_date": "2019-04-18",
+		"weight": 7.8,
+		"health_notes": "Saudável, sem problemas conhecidos."
+	},
+	{
+		"id": "7",
+		"name": "Rocky",
+		"species": "dog",
+		"breed": "Rottweiler",
+		"birth_date": "2015-09-10",
+		"weight": 45.0,
+		"health_notes": "Problemas articulares, em acompanhamento."
+	},
+	{
+		"id": "8",
+		"name": "Nina",
+		"species": "cat",
+		"breed": "Vira-lata",
+		"birth_date": "2021-01-05",
+		"weight": 3.9,
+		"health_notes": "Saudável, vacinação em dia."
+	},
+	{
+		"id": "9",
+		"name": "Buddy",
+		"species": "dog",
+		"breed": "Beagle",
+		"birth_date": "2019-03-20",
+		"weight": 15.0,
+		"health_notes": "Alergia a pulgas."
+	},
+	{
+		"id": "10",
+		"name": "Lola",
+		"species": "cat",
+		"breed": "Angorá",
+		"birth_date": "2018-12-14",
+		"weight": 4.8,
+		"health_notes": "Problemas dentários, em tratamento."
+	},
+	{
+		"id": "11",
+		"name": "Zeus",
+		"species": "dog",
+		"breed": "Pastor Alemão",
+		"birth_date": "2017-06-08",
+		"weight": 38.0,
+		"health_notes": "Saudável, em treinamento."
+	},
+	{
+		"id": "12",
+		"name": "Mia",
+		"species": "cat",
+		"breed": "Sphynx",
+		"birth_date": "2020-10-01",
+		"weight": 3.5,
+		"health_notes": "Necessita de proteção solar devido à falta de pelo."
+	},
+	{
+		"id": "13",
+		"name": "Duke",
+		"species": "dog",
+		"breed": "Dachshund",
+		"birth_date": "2019-09-17",
+		"weight": 8.5,
+		"health_notes": "Problemas de coluna, em acompanhamento."
+	},
+	{
+		"id": "14",
+		"name": "Chloe",
+		"species": "cat",
+		"breed": "Ragdoll",
+		"birth_date": "2018-03-22",
+		"weight": 6.0,
+		"health_notes": "Saudável, vacinação em dia."
+	},
+	{
+		"id": "15",
+		"name": "Toby",
+		"species": "dog",
+		"breed": "Poodle",
+		"birth_date": "2021-07-11",
+		"weight": 6.8,
+		"health_notes": "Saudável, em treinamento básico."
+	}
+]
