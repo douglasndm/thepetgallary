@@ -24,7 +24,8 @@ import {
 } from './styles';
 
 const PetDetails: React.FC = () => {
-	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
+	const { navigate, addListener } =
+		useNavigation<NativeStackNavigationProp<AppRoutes>>();
 	const { params } = useRoute<RouteProp<AppRoutes, 'PetDetails'>>();
 
 	const [isLoading, setIsLoading] = useState(true);
@@ -88,6 +89,14 @@ const PetDetails: React.FC = () => {
 	const navigateToEditPet = useCallback(() => {
 		navigate('PetEdit', { id: params.id });
 	}, [navigate, params.id]);
+
+	useEffect(() => {
+		const unsubscribe = addListener('focus', () => {
+			loadData();
+		});
+
+		return unsubscribe;
+	}, [addListener]);
 
 	return (
 		<Container>
