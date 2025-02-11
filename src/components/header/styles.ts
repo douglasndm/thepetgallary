@@ -1,11 +1,17 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+import { Platform } from 'react-native';
 import Ionicons from '@react-native-vector-icons/ionicons';
 
 export const Container = styled.SafeAreaView`
 	flex-direction: row;
 	align-items: center;
-	margin-top: 15px;
+	margin: 15px 10px 0;
 	padding: 0 20px;
+
+	${Platform.OS === 'ios' &&
+	css`
+		margin-top: 0;
+	`}
 `;
 
 export const Content = styled.Pressable`
