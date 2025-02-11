@@ -31,11 +31,4 @@ class AppDelegate: RCTAppDelegate {
     Bundle.main.url(forResource: "main", withExtension: "jsbundle")
 #endif
   }
-    
-    // This is only required if you have multiple listeners for openURL - for instance if you have both Google and Facebook OAuth.
-    override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        // Add any other URL handlers you're using (e.g. Facebook SDK)
-        return ApplicationDelegate.shared.application(app, open: url, options: options) ||
-               GIDSignIn.sharedInstance.handle(url)
-      }
 }
