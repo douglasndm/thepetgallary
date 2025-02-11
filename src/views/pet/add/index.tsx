@@ -1,5 +1,12 @@
 import React, { useState, useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import DateTimePicker from 'react-native-ui-datepicker';
+import { showMessage } from 'react-native-flash-message';
+
+import { captureException } from '@services/exceptionsHandler';
+
+import { savePet } from '@utils/pets/save';
 
 import Header from '@components/header';
 import Padding from '@components/padding';
@@ -17,11 +24,16 @@ import {
 } from './styles';
 
 const AddPet: React.FC = () => {
+	const { pop } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
+
+	const [isSaving, setIsSaving] = useState<boolean>(false);
+
 	const [name, setName] = useState<string>('');
 
 	const [species, setSpecies] = useState<'dog' | 'cat' | null>(null);
 
-	const [date, setDate] = useState(new Date());
+	const [date, setDate] = useState<Date>(new Date());
+	const [useBirthDate, setUseBirthDate] = useState<boolean>(false);
 
 	const [breed, setBreed] = useState<string>('');
 	const [weight, setWeight] = useState<number>();
@@ -36,7 +48,31 @@ const AddPet: React.FC = () => {
 		setDate(value.date);
 	}, []);
 
-	const handleSave = useCallback(async () => {}, []);
+	const handleSave = useCallback(async () => {
+		try {
+			setIsSaving(true);
+
+			await savePet({
+				name,
+				species,
+				breed,
+				birth_date: useBirthDate ? date : null,
+				weight: weight || null,
+				health_notes: healthNotes,
+			});
+
+			showMessage({
+				message: 'Pet cadastrado com sucesso',
+				type: 'success',
+			});
+
+			pop();
+		} catch (error) {
+			captureException({ error, showAlert: true });
+		} finally {
+			setIsSaving(false);
+		}
+	}, [name, species, breed, weight, healthNotes, date, useBirthDate, pop]);
 
 	return (
 		<Container>
@@ -100,15 +136,23 @@ const AddPet: React.FC = () => {
 					onChangeText={setHealthNotes}
 				/>
 
-				<Label>Data de nascimento</Label>
+				{useBirthDate && (
+					<>
+						<Label>Data de nascimento</Label>
 
-				<DateTimePicker
-					mode="single"
-					date={date}
-					onChange={onBirthDateChange}
+						<DateTimePicker
+							mode="single"
+							date={date}
+							onChange={onBirthDateChange}
+						/>
+					</>
+				)}
+
+				<Button
+					title="Salvar"
+					onPress={handleSave}
+					disabled={isSaving}
 				/>
-
-				<Button title="Salvar" onPress={handleSave} />
 			</Content>
 
 			<Padding />
