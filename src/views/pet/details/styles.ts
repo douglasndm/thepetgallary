@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Surface } from 'react-native-paper';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import Ionicons from '@react-native-vector-icons/ionicons';
 
@@ -12,7 +13,9 @@ export const Container = styled.ScrollView.attrs(() => ({
 	background-color: #e8e8ea;
 `;
 
-export const Content = styled.View`
+export const Content = styled(Surface).attrs(() => ({
+	elevation: 4,
+}))`
 	margin: 20px 10px;
 	background-color: #ffffff;
 	border-radius: 12px;
