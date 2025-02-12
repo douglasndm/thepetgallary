@@ -11,7 +11,7 @@ import { PhotoContainer } from './styles';
 
 interface Props {
 	item: APIItem;
-	type: 'Cat' | 'Dog';
+	type?: 'Cat' | 'Dog';
 	index: number;
 }
 

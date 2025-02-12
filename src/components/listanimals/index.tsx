@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
 	FlatList,
 	NativeScrollEvent,
 	NativeSyntheticEvent,
 } from 'react-native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import Modal from '@components/modal/image';
 import Padding from '@components/padding';
@@ -12,7 +13,6 @@ import Image from './image';
 
 interface Props {
 	images: APIItem[];
-	currentView: ICurrentView;
 	ListHeaderComponent?:
 		| React.ReactElement<any, string | React.JSXElementConstructor<any>>
 		| React.ComponentType<any>
@@ -25,10 +25,21 @@ interface Props {
 
 const ListAnimals: React.FC<Props> = ({
 	images,
-	currentView,
 	ListHeaderComponent,
 	onScroll,
 }: Props) => {
+	const route = useRoute<RouteProp<AppRoutes>>();
+
+	const imageType = useMemo(() => {
+		if (route.name === 'DogsView') {
+			return 'Dog';
+		} else if (route.name === 'CatsView') {
+			return 'Cat';
+		}
+
+		return undefined;
+	}, [route.name]);
+
 	return (
 		<>
 			<Modal />
@@ -37,7 +48,7 @@ const ListAnimals: React.FC<Props> = ({
 				ListHeaderComponent={ListHeaderComponent}
 				numColumns={2}
 				renderItem={({ item, index }) => (
-					<Image item={item} type={currentView} index={index} />
+					<Image item={item} type={imageType} index={index} />
 				)}
 				onScroll={onScroll}
 				ListFooterComponent={<Padding />}
