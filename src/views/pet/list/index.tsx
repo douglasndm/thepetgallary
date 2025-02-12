@@ -16,6 +16,7 @@ import {
 	PetName,
 	PetBreed,
 	Icon,
+	EmptyListName,
 	ActionButtonContainer,
 	ActionButtonIcon,
 	ActionButtonText,
@@ -112,6 +113,12 @@ const PetList: React.FC = () => {
 					</PetContainer>
 				);
 			})}
+
+			{pets.length <= 0 && (
+				<EmptyListName>
+					Cadastre seus pets para facilitar o acompanhamento deles
+				</EmptyListName>
+			)}
 
 			<Padding />
 		</Container>

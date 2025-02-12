@@ -45,6 +45,11 @@ export const Icon = styled(MaterialDesignIcons).attrs(() => ({
 	size: 25,
 }))``;
 
+export const EmptyListName = styled.Text`
+	color: #000000;
+	margin: 5px 10px;
+`;
+
 export const ActionButtonContainer = styled.TouchableOpacity`
 	flex-direction: row;
 	align-items: center;
