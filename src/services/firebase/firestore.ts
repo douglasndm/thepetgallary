@@ -1,6 +1,8 @@
 import { getAuth } from '@react-native-firebase/auth';
 import {
 	getFirestore,
+	collection,
+	doc,
 	FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
 import netInfo from '@react-native-community/netinfo';
@@ -23,12 +25,11 @@ async function getUserPetsReference(): Promise<FirebaseFirestoreTypes.Collection
 		return null;
 	}
 
-	const collection = getFirestore()
-		.collection('users')
-		.doc(user.uid)
-		.collection('pets');
+	const usersCollection = collection(getFirestore(), 'users');
+	const userDoc = doc(usersCollection, user.uid);
+	const petsCollection = collection(userDoc, 'pets');
 
-	return collection;
+	return petsCollection;
 }
 
 export { getUserPetsReference };
