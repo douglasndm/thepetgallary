@@ -45,7 +45,7 @@ const ListPics: React.FC = () => {
 
 	useEffect(() => {
 		loadData();
-	}, []);
+	}, [loadData]);
 
 	const ListHeader = useCallback(() => {
 		return (
@@ -59,18 +59,21 @@ const ListPics: React.FC = () => {
 		);
 	}, []);
 
-	const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-		const { layoutMeasurement, contentOffset, contentSize } =
-			event.nativeEvent;
+	const handleScroll = useCallback(
+		(event: NativeSyntheticEvent<NativeScrollEvent>) => {
+			const { layoutMeasurement, contentOffset, contentSize } =
+				event.nativeEvent;
 
-		const threshold = 0.75; // Percentual da tela antes de carregar mais
-		const position = contentOffset.y + layoutMeasurement.height;
-		const shouldFetchMore = position >= contentSize.height * threshold;
+			const threshold = 0.75; // Percentual da tela antes de carregar mais
+			const position = contentOffset.y + layoutMeasurement.height;
+			const shouldFetchMore = position >= contentSize.height * threshold;
 
-		if (shouldFetchMore && !loading) {
-			setPage(prevPage => prevPage + 1); // Carrega a próxima página
-		}
-	};
+			if (shouldFetchMore && !loading) {
+				setPage(prevPage => prevPage + 1); // Carrega a próxima página
+			}
+		},
+		[loading]
+	);
 
 	return (
 		<Container>
