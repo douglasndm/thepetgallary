@@ -1,8 +1,11 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+import { Surface } from 'react-native-paper';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
-export const Container = styled.View`
+export const Container = styled(Surface).attrs(() => ({
+	elevation: 2,
+}))`
 	position: absolute;
 	bottom: 0;
 	width: 100%;
