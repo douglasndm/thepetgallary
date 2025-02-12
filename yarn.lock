@@ -10040,21 +10040,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.5.0":
+"prettier@npm:3.5.0, prettier@npm:^3.2.5":
   version: 3.5.0
   resolution: "prettier@npm:3.5.0"
   bin:
     prettier: bin/prettier.cjs
   checksum: 10c0/6c355d74c377f5622953229d92477e8b9779162e848db90fd7e06c431deb73585d31fafc4516cf5868917825b97b9ec7c87c8d8b8e03ccd9fc9c0b7699d1a650
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^3.2.5":
-  version: 3.4.2
-  resolution: "prettier@npm:3.4.2"
-  bin:
-    prettier: bin/prettier.cjs
-  checksum: 10c0/99e076a26ed0aba4ebc043880d0f08bbb8c59a4c6641cdee6cdadf2205bdd87aa1d7823f50c3aea41e015e99878d37c58d7b5f0e663bba0ef047f94e36b96446
   languageName: node
   linkType: hard
 
@@ -10334,6 +10325,13 @@ __metadata:
     react-native-windows:
       optional: true
   checksum: 10c0/ef7c78d39884e285cd568d7c0edc4aa3cf59b9ff31722f3fcfc80d0852552700d71660c159b2137e296472834e3dd109a38ca43554fdf59c82d80433287cffb4
+  languageName: node
+  linkType: hard
+
+"react-native-radio-buttons-group@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "react-native-radio-buttons-group@npm:3.1.0"
+  checksum: 10c0/2e51b69a67b6c9e82985d67ea8ce4512d39dfe06eb5fccd723fbb97db36c3c585d96af7cd4cb15d41fa92d17c281be00ef26f0f0aea666d9f1c46a06586590da
   languageName: node
   linkType: hard
 
@@ -11718,6 +11716,7 @@ __metadata:
     react-native-get-random-values: "npm:^1.11.0"
     react-native-paper: "npm:^5.13.1"
     react-native-permissions: "npm:^5.2.5"
+    react-native-radio-buttons-group: "npm:^3.1.0"
     react-native-safe-area-context: "npm:^5.2.0"
     react-native-screens: "npm:^4.6.0"
     react-native-share: "npm:^12.0.3"
