@@ -8,6 +8,7 @@ import { getUserPetsReference } from '@services/firebase/firestore';
 import { captureException } from '@services/exceptionsHandler';
 
 import Header from '@components/header';
+import ActionButton from '@components/actionButton';
 import Button from '@components/button';
 import Loading from '@components/loading';
 import Padding from '@components/padding';
@@ -45,10 +46,6 @@ const EditPet: React.FC = () => {
 		if (isNaN(convertedWeight)) return;
 
 		setWeight(convertedWeight);
-	}, []);
-
-	const onBirthDateChange = useCallback(value => {
-		setDate(value.date);
 	}, []);
 
 	const loadData = useCallback(async () => {
@@ -124,6 +121,29 @@ const EditPet: React.FC = () => {
 		params,
 	]);
 
+	const handleDelete = useCallback(async () => {
+		try {
+			setIsLoading(true);
+
+			const petsReference = await getUserPetsReference();
+
+			if (petsReference) {
+				await petsReference.doc(params.id).delete();
+			}
+
+			showMessage({
+				message: 'Pet excluido com sucesso',
+				type: 'success',
+			});
+
+			pop(2);
+		} catch (error) {
+			captureException({ error, showAlert: true });
+		} finally {
+			setIsLoading(false);
+		}
+	}, [params.id, pop]);
+
 	useEffect(() => {
 		loadData();
 	}, []);
@@ -131,6 +151,12 @@ const EditPet: React.FC = () => {
 	return (
 		<Container>
 			<Header />
+
+			<ActionButton
+				iconName="trash-outline"
+				title="Excluir pet"
+				onPress={handleDelete}
+			/>
 
 			{isLoading ? (
 				<Loading />
@@ -206,7 +232,9 @@ const EditPet: React.FC = () => {
 							<DateTimePicker
 								mode="single"
 								date={date}
-								onChange={onBirthDateChange}
+								onChange={change => {
+									console.log(change);
+								}}
 							/>
 						</>
 					)}
