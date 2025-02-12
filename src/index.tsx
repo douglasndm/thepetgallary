@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import {
 	NavigationContainer,
 	NavigationContainerRef,
@@ -18,7 +18,6 @@ import '@services/firebase/appchecker';
 import '@utils/permissions/notifications';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
-import CurrentViewContext from '@contexts/currentView';
 
 import TabMenu from '@components/tabmenu';
 import NoInternet from '@components/NoInternet';
@@ -35,21 +34,25 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 });
 
 const App: React.FC = () => {
-	const routeNameRef = React.useRef<string | undefined>(undefined);
-	const navigationRef = React.useRef<NavigationContainerRef<AppRoutes>>(null);
+	const routeNameRef = useRef<string | undefined>(undefined);
+	const navigationRef = useRef<NavigationContainerRef<AppRoutes>>(null);
 
-	const [currentView, setCurrentView] = useState<ICurrentView>('Dog');
+	const [currentRoute, setCurrentRoute] = useState<string | undefined>(
+		undefined
+	);
 	const [currentPhoto, setCurrentPhoto] = useState<APIItem | null>(null);
 
 	const { isInternetReachable } = useNetInfo();
 
 	const onRouteChange = useCallback(async () => {
-		if (__DEV__) return;
 		if (!navigationRef || !navigationRef.current) return;
 
 		const previousRouteName = routeNameRef.current;
 		const currentRouteName = navigationRef.current.getCurrentRoute()?.name;
 
+		setCurrentRoute(currentRouteName);
+
+		if (__DEV__) return;
 		if (previousRouteName !== currentRouteName) {
 			await analytics().logScreenView({
 				screen_name: currentRouteName,
@@ -74,28 +77,21 @@ const App: React.FC = () => {
 		>
 			<SafeAreaProvider>
 				<PaperProvider>
-					<CurrentViewContext.Provider
-						value={{ currentView, setCurrentView }}
+					<CurrentPhotoContext.Provider
+						value={{ currentPhoto, setCurrentPhoto }}
 					>
-						<CurrentPhotoContext.Provider
-							value={{ currentPhoto, setCurrentPhoto }}
-						>
-							<SystemBars style="dark" hidden={false} />
-							{!isInternetReachable && <NoInternet />}
-							<Notifications />
-							<Routes />
-							<TabMenu
-								currentView={currentView}
-								onPress={setCurrentView}
-							/>
+						<SystemBars style="dark" hidden={false} />
+						{!isInternetReachable && <NoInternet />}
+						<Notifications />
+						<Routes />
+						<TabMenu currentRoute={currentRoute} />
 
-							<FlashMessage
-								position="top"
-								statusBarHeight={40}
-								duration={6000}
-							/>
-						</CurrentPhotoContext.Provider>
-					</CurrentViewContext.Provider>
+						<FlashMessage
+							position="top"
+							statusBarHeight={40}
+							duration={6000}
+						/>
+					</CurrentPhotoContext.Provider>
 				</PaperProvider>
 			</SafeAreaProvider>
 		</NavigationContainer>

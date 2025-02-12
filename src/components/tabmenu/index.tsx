@@ -7,44 +7,33 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Container, Content, Button, Icon, MaterialIcons } from './styles';
 
 interface Props {
-	currentView: ICurrentView;
-	onPress: (value: ICurrentView) => void;
+	currentRoute: string | undefined;
 }
 
-const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
+const TabMenu: React.FC<Props> = (props: Props) => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
 
 	const insets = useSafeAreaInsets();
 
 	const navigateDog = useCallback(() => {
-		onPress('Dog');
-
-		navigate('Home', {});
-	}, [navigate, onPress]);
+		navigate('DogsView', {});
+	}, [navigate]);
 
 	const navigateCat = useCallback(() => {
-		onPress('Cat');
-
-		navigate('Home', {});
-	}, [navigate, onPress]);
+		navigate('CatsView', {});
+	}, [navigate]);
 
 	const navigatePlaces = useCallback(() => {
-		onPress('Places');
-
 		navigate('PlacesList', {});
-	}, [navigate, onPress]);
+	}, [navigate]);
 
 	const navigatePetList = useCallback(() => {
-		onPress('PetList');
-
 		navigate('PetList', {});
-	}, [navigate, onPress]);
+	}, [navigate]);
 
 	const navigateMenu = useCallback(() => {
-		onPress('Menu');
-
 		navigate('Menu', {});
-	}, [navigate, onPress]);
+	}, [navigate]);
 
 	return (
 		<Container>
@@ -52,20 +41,20 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 				<Button onPress={navigateDog}>
 					<Icon
 						source={require('@assets/images/dog-head.png')}
-						isSelected={currentView === 'Dog'}
+						isSelected={props.currentRoute === 'DogsView'}
 					/>
 				</Button>
 				<Button onPress={navigateCat}>
 					<Icon
 						source={require('@assets/images/cat-head.png')}
-						isSelected={currentView === 'Cat'}
+						isSelected={props.currentRoute === 'CatsView'}
 					/>
 				</Button>
 
 				<Button onPress={navigatePlaces}>
 					<Icon
 						source={require('@assets/images/pets-hospital.png')}
-						isSelected={currentView === 'Places'}
+						isSelected={props.currentRoute === 'PlacesList'}
 					/>
 				</Button>
 
@@ -73,7 +62,7 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 					<Button onPress={navigatePetList}>
 						<MaterialIcons
 							name="needle"
-							isSelected={currentView === 'PetList'}
+							isSelected={props.currentRoute === 'PetList'}
 						/>
 					</Button>
 				)}
@@ -81,7 +70,7 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 				<Button onPress={navigateMenu}>
 					<Icon
 						source={require('@assets/images/navigation-menu-1.png')}
-						isSelected={currentView === 'Menu'}
+						isSelected={props.currentRoute === 'Menu'}
 					/>
 				</Button>
 			</Content>
@@ -89,4 +78,4 @@ const tabmenu: React.FC<Props> = ({ currentView, onPress }: Props) => {
 	);
 };
 
-export default tabmenu;
+export default TabMenu;

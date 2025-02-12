@@ -1,7 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Home from '@views/home';
+import DogsView from '@views/photos/list/dogs';
+import CatsView from '@views/photos/list/cats';
+
 import PlacesList from '@views/places/list';
 import Menu from '@views/menu';
 import Login from '@views/auth/login';
@@ -16,10 +18,12 @@ import Vaccines from '@views/vaccines';
 
 const Stack = createNativeStackNavigator<AppRoutes>();
 
-const routes: React.FC = () => {
+const Routes: React.FC = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="Home" component={Home} />
+			<Stack.Screen name="DogsView" component={DogsView} />
+			<Stack.Screen name="CatsView" component={CatsView} />
+
 			<Stack.Screen name="PlacesList" component={PlacesList} />
 			<Stack.Screen name="Menu" component={Menu} />
 			<Stack.Screen name="Login" component={Login} />
@@ -35,4 +39,4 @@ const routes: React.FC = () => {
 	);
 };
 
-export default routes;
+export default Routes;

@@ -1,4 +1,7 @@
 type AppRoutes = {
+	DogsView: {};
+	CatsView: {};
+
 	Home: {};
 	PlacesList: {};
 	Menu: {};
