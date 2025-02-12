@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import auth from '@react-native-firebase/auth';
+import { getAuth } from '@react-native-firebase/auth';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Container, Content, Button, Icon, MaterialIcons } from './styles';
@@ -58,7 +58,7 @@ const TabMenu: React.FC<Props> = (props: Props) => {
 					/>
 				</Button>
 
-				{auth().currentUser && (
+				{getAuth().currentUser && (
 					<Button onPress={navigatePetList}>
 						<MaterialIcons
 							name="paw"

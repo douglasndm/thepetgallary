@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import auth from '@react-native-firebase/auth';
+import { getAuth } from '@react-native-firebase/auth';
 import {
 	appleAuth,
 	appleAuthAndroid,
@@ -71,7 +71,7 @@ const Login: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		auth().onAuthStateChanged(user => {
+		getAuth().onAuthStateChanged(user => {
 			if (user) {
 				replace('Profile', {});
 			}

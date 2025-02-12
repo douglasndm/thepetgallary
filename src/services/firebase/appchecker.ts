@@ -1,4 +1,5 @@
-import appCheck from '@react-native-firebase/app-check';
+import { getApp } from '@react-native-firebase/app';
+import appCheck, { initializeAppCheck } from '@react-native-firebase/app-check';
 import EnvConfig from 'react-native-config';
 
 const rnfbProvider = appCheck().newReactNativeFirebaseAppCheckProvider();
@@ -13,11 +14,9 @@ rnfbProvider.configure({
 	},
 });
 
-appCheck()
-	.initializeAppCheck({
-		provider: rnfbProvider,
-		isTokenAutoRefreshEnabled: true,
-	})
-	.then(() => {
-		console.log('AppCheck initialized');
-	});
+initializeAppCheck(getApp(), {
+	provider: rnfbProvider,
+	isTokenAutoRefreshEnabled: true,
+}).then(() => {
+	console.log('AppCheck initialized');
+});

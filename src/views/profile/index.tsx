@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { getAuth, FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 import Header from '@components/header';
 import Button from '@components/button';
@@ -14,13 +14,13 @@ const Profile: React.FC = () => {
 	const [user, setUser] = useState<FirebaseAuthTypes.User | null>();
 
 	const handleLogout = useCallback(async () => {
-		await auth().signOut();
+		await getAuth().signOut();
 
 		replace('Login', {});
 	}, [replace]);
 
 	useEffect(() => {
-		auth().onAuthStateChanged(currentUser => {
+		getAuth().onAuthStateChanged(currentUser => {
 			setUser(currentUser);
 		});
 	}, []);

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Linking } from 'react-native';
-import firestore from '@react-native-firebase/firestore';
+import { getFirestore } from '@react-native-firebase/firestore';
 import Icon from '@react-native-vector-icons/ionicons';
 
 import { organizeData } from '@utils/adoptionsPlaces/organizeData';
@@ -33,7 +33,7 @@ const PlacesList: React.FC = () => {
 		try {
 			setIsLoading(true);
 
-			const placesResponse = await firestore()
+			const placesResponse = await getFirestore()
 				.collection('adoptionsPlaces')
 				.get();
 

@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/native';
 import * as Sentry from '@sentry/react-native';
 import EnvConfig from 'react-native-config';
-import analytics from '@react-native-firebase/analytics';
+import { getAnalytics } from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -54,7 +54,7 @@ const App: React.FC = () => {
 
 		if (__DEV__) return;
 		if (previousRouteName !== currentRouteName) {
-			await analytics().logScreenView({
+			await getAnalytics().logScreenView({
 				screen_name: currentRouteName,
 				screen_class: currentRouteName,
 			});
