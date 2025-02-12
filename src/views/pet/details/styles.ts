@@ -14,7 +14,7 @@ export const Container = styled.ScrollView.attrs(() => ({
 `;
 
 export const Content = styled(Surface).attrs(() => ({
-	elevation: 4,
+	elevation: 1,
 }))`
 	margin: 20px 10px;
 	background-color: #ffffff;

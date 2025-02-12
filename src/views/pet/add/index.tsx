@@ -28,13 +28,8 @@ const AddPet: React.FC = () => {
 	const [useBirthDate, setUseBirthDate] = useState<boolean>(false);
 
 	const [breed, setBreed] = useState<string>('');
-	const [weight, setWeight] = useState<number>();
+	const [weight, setWeight] = useState<string>();
 	const [healthNotes, setHealthNotes] = useState<string>('');
-
-	const onWeightChange = useCallback((value: string) => {
-		const convertedWeight = Number(value);
-		setWeight(convertedWeight);
-	}, []);
 
 	const handleSave = useCallback(async () => {
 		try {
@@ -45,7 +40,7 @@ const AddPet: React.FC = () => {
 				species: species as 'cat' | 'dog' | null,
 				breed,
 				birth_date: useBirthDate ? date : null,
-				weight: weight || null,
+				weight: weight ? Number(weight) : null,
 				health_notes: healthNotes,
 			});
 
@@ -61,6 +56,14 @@ const AddPet: React.FC = () => {
 			setIsSaving(false);
 		}
 	}, [name, species, breed, weight, healthNotes, date, useBirthDate, pop]);
+
+	const handleWeightChange = useCallback((value: string) => {
+		// Validate if the input is a valid double value
+		const regex = /^-?\d*(\.\d*)?$/;
+		if (regex.test(value)) {
+			setWeight(value.trim());
+		}
+	}, []);
 
 	const radioButtons: RadioButtonProps[] = useMemo(
 		() => [
@@ -131,7 +134,7 @@ const AddPet: React.FC = () => {
 					placeholder="Peso"
 					keyboardType="numeric"
 					value={weight?.toString()}
-					onChangeText={onWeightChange}
+					onChangeText={handleWeightChange}
 				/>
 
 				<Input

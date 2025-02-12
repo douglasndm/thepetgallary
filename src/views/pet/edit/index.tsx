@@ -30,15 +30,8 @@ const EditPet: React.FC = () => {
 	const [useBirthDate, setUseBirthDate] = useState<boolean>(false);
 
 	const [breed, setBreed] = useState<string | undefined>();
-	const [weight, setWeight] = useState<number | undefined>();
+	const [weight, setWeight] = useState<string | undefined>();
 	const [healthNotes, setHealthNotes] = useState<string | undefined>();
-
-	const onWeightChange = useCallback((value: string) => {
-		const convertedWeight = Number(value);
-		if (isNaN(convertedWeight)) return;
-
-		setWeight(convertedWeight);
-	}, []);
 
 	const loadData = useCallback(async () => {
 		try {
@@ -55,10 +48,13 @@ const EditPet: React.FC = () => {
 						const pet = petsSnapshot.data() as IPet;
 
 						setName(pet.name);
-						setSpecies(pet.species);
+						setSpecies(pet.species || undefined);
 						setBreed(pet.breed || undefined);
-						setWeight(pet.weight || undefined);
 						setHealthNotes(pet.health_notes || undefined);
+
+						if (pet.weight) {
+							setWeight(pet.weight.toString());
+						}
 
 						let birthDate: Date | null = null;
 
@@ -93,7 +89,7 @@ const EditPet: React.FC = () => {
 					name,
 					species,
 					breed: breed || null,
-					weight: weight || null,
+					weight: weight ? Number(weight) : null,
 					health_notes: healthNotes || null,
 					birth_date: useBirthDate ? date : null,
 				});
@@ -186,6 +182,14 @@ const EditPet: React.FC = () => {
 		loadData();
 	}, []);
 
+	const handleWeightChange = useCallback((value: string) => {
+		// Validate if the input is a valid double value
+		const regex = /^-?\d*(\.\d*)?$/;
+		if (regex.test(value)) {
+			setWeight(value.trim());
+		}
+	}, []);
+
 	return (
 		<Container>
 			<Header />
@@ -226,8 +230,8 @@ const EditPet: React.FC = () => {
 					<Input
 						placeholder="Peso"
 						keyboardType="numeric"
-						value={weight?.toString()}
-						onChangeText={onWeightChange}
+						value={weight}
+						onChangeText={handleWeightChange}
 					/>
 
 					<Input
