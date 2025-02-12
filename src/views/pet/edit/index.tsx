@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group';
 import DateTimePicker from 'react-native-ui-datepicker';
 import { showMessage } from 'react-native-flash-message';
 
@@ -13,16 +14,7 @@ import Button from '@components/button';
 import Loading from '@components/loading';
 import Padding from '@components/padding';
 
-import {
-	Container,
-	Content,
-	Input,
-	RadioButtonContainer,
-	RadioButtonContent,
-	RadioButton,
-	RadioButtonLabel,
-	Label,
-} from '../add/styles';
+import { Container, Content, Input, Label } from '../add/styles';
 
 const EditPet: React.FC = () => {
 	const { pop } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
@@ -32,7 +24,7 @@ const EditPet: React.FC = () => {
 
 	const [name, setName] = useState<string>('');
 
-	const [species, setSpecies] = useState<'dog' | 'cat' | null>(null);
+	const [species, setSpecies] = useState<string | undefined>(undefined);
 
 	const [date, setDate] = useState<Date>(new Date());
 	const [useBirthDate, setUseBirthDate] = useState<boolean>(false);
@@ -153,6 +145,43 @@ const EditPet: React.FC = () => {
 		}
 	}, [params.id, pop]);
 
+	const radioButtons: RadioButtonProps[] = useMemo(
+		() => [
+			{
+				id: 'dog', // acts as primary key, should be unique and non-empty string
+				label: 'Cachorro',
+				value: 'dog',
+			},
+			{
+				id: 'cat',
+				label: 'Gato',
+				value: 'cat',
+			},
+			{
+				id: 'null',
+				label: 'Outro',
+				value: undefined,
+			},
+		],
+		[]
+	);
+
+	const useBirthDateRadioButtons: RadioButtonProps[] = useMemo(
+		() => [
+			{
+				id: 'yes', // acts as primary key, should be unique and non-empty string
+				label: 'Sim',
+				value: 'yes',
+			},
+			{
+				id: 'no',
+				label: 'Não',
+				value: 'no',
+			},
+		],
+		[]
+	);
+
 	useEffect(() => {
 		loadData();
 	}, []);
@@ -179,40 +208,15 @@ const EditPet: React.FC = () => {
 
 					<Label>Espécie</Label>
 
-					<RadioButtonContainer>
-						<RadioButtonContent>
-							<RadioButton
-								value="Cachorro"
-								status={
-									species === 'dog' ? 'checked' : 'unchecked'
-								}
-								onPress={() => setSpecies('dog')}
-							/>
-							<RadioButtonLabel>Cachorro</RadioButtonLabel>
-						</RadioButtonContent>
-
-						<RadioButtonContent>
-							<RadioButton
-								value="Gato"
-								status={
-									species === 'cat' ? 'checked' : 'unchecked'
-								}
-								onPress={() => setSpecies('cat')}
-							/>
-							<RadioButtonLabel>Gato</RadioButtonLabel>
-						</RadioButtonContent>
-
-						<RadioButtonContent>
-							<RadioButton
-								value="null"
-								status={
-									species === null ? 'checked' : 'unchecked'
-								}
-								onPress={() => setSpecies(null)}
-							/>
-							<RadioButtonLabel>Outro</RadioButtonLabel>
-						</RadioButtonContent>
-					</RadioButtonContainer>
+					<RadioGroup
+						radioButtons={radioButtons}
+						onPress={setSpecies}
+						selectedId={species}
+						containerStyle={{
+							flexDirection: 'row',
+							justifyContent: 'space-between',
+						}}
+					/>
 
 					<Input
 						placeholder="Raça"
@@ -235,33 +239,21 @@ const EditPet: React.FC = () => {
 					/>
 
 					<Label>Editar data de nascimento</Label>
-					<RadioButtonContainer>
-						<RadioButtonContent>
-							<RadioButton
-								value="no"
-								status={
-									useBirthDate === false
-										? 'checked'
-										: 'unchecked'
-								}
-								onPress={() => setUseBirthDate(false)}
-							/>
-							<RadioButtonLabel>Não</RadioButtonLabel>
-						</RadioButtonContent>
-
-						<RadioButtonContent>
-							<RadioButton
-								value="yes"
-								status={
-									useBirthDate === true
-										? 'checked'
-										: 'unchecked'
-								}
-								onPress={() => setUseBirthDate(true)}
-							/>
-							<RadioButtonLabel>Sim</RadioButtonLabel>
-						</RadioButtonContent>
-					</RadioButtonContainer>
+					<RadioGroup
+						radioButtons={useBirthDateRadioButtons}
+						onPress={selected => {
+							if (selected === 'yes') {
+								setUseBirthDate(true);
+							} else {
+								setUseBirthDate(false);
+							}
+						}}
+						selectedId={useBirthDate ? 'yes' : 'no'}
+						containerStyle={{
+							flexDirection: 'row',
+							justifyContent: 'center',
+						}}
+					/>
 
 					{useBirthDate && (
 						<>

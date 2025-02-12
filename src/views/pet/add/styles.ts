@@ -24,25 +24,6 @@ export const Input = styled.TextInput`
 	color: #000;
 `;
 
-export const RadioButtonContainer = styled.View`
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	margin-bottom: 10px;
-`;
-
-export const RadioButtonContent = styled.View`
-	align-items: center;
-`;
-
-export const RadioButton = styled(PaperRadioButton).attrs(() => ({
-	color: '#f8cdb9',
-}))``;
-
-export const RadioButtonLabel = styled.Text`
-	font-size: 15px;
-`;
-
 export const Label = styled.Text`
 	font-size: 14px;
 	color: #000000;
