@@ -126,6 +126,7 @@
 				FDBFC8099E8C6F27E843CD97 /* [CP] Embed Pods Frameworks */,
 				2EE022805E9A94092C9D074E /* [CP] Copy Pods Resources */,
 				AD80B53344BC5A41B9A4117D /* [CP-User] [RNFB] Core Configuration */,
+				4FBDC5182D5C8D0B003F894B /* Set Info.plist version from package.json */,
 			);
 			buildRules = (
 			);
@@ -238,6 +239,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4FBDC5182D5C8D0B003F894B /* Set Info.plist version from package.json */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set Info.plist version from package.json";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n# Caminho para o arquivo package.json\nPACKAGE_JSON=\"../package.json\"\n\n# Verificar se o arquivo package.json existe\nif [ -e \"$PACKAGE_JSON\" ]; then\n   echo \"O arquivo package.json existe.\"\nelse\n   echo \"ERRO: O arquivo package.json não foi encontrado.\"\n   exit 1\nfi\n\n# Ler a versão do package.json\nVERSION=$(node -p \"require('$PACKAGE_JSON').version\")\nAPP_BUILD=$(node -p \"require('$PACKAGE_JSON').build\")\n\n# Imprimir a versão\necho \"Versão do aplicativo: $VERSION\"\necho \"Build: $APP_BUILD\"\n\n# Caminho para o pacote do aplicativo\nAPP_BUNDLE=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# Caminho para o arquivo Info.plist dentro do pacote\nINFO_PLIST=\"${APP_BUNDLE}/Info.plist\"\n\necho $INFO_PLIST\n\n# Verificar se o arquivo Info.plist existe\nif [ -e \"$INFO_PLIST\" ]; then\n   echo \"O arquivo Info.plist existe.\"\nelse\n   echo \"ERRO: O arquivo Info.plist não foi encontrado.\"\n   exit 1\nfi\n\n# Configurar a versão no Info.plist\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $VERSION\" \"$INFO_PLIST\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $APP_BUILD\" \"$INFO_PLIST\"\n";
+		};
 		506279A95958421E8505A760 /* Upload Debug Symbols to Sentry */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,7 +269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode-debug-files.sh";
+			shellScript = "/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode-debug-files.sh\n";
 		};
 		AD80B53344BC5A41B9A4117D /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
