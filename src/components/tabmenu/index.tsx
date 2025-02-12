@@ -61,7 +61,7 @@ const TabMenu: React.FC<Props> = (props: Props) => {
 				{auth().currentUser && (
 					<Button onPress={navigatePetList}>
 						<MaterialIcons
-							name="needle"
+							name="paw"
 							isSelected={props.currentRoute === 'PetList'}
 						/>
 					</Button>
