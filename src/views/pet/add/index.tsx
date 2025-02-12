@@ -44,10 +44,6 @@ const AddPet: React.FC = () => {
 		setWeight(convertedWeight);
 	}, []);
 
-	const onBirthDateChange = useCallback(value => {
-		setDate(value.date);
-	}, []);
-
 	const handleSave = useCallback(async () => {
 		try {
 			setIsSaving(true);
@@ -136,6 +132,31 @@ const AddPet: React.FC = () => {
 					onChangeText={setHealthNotes}
 				/>
 
+				<Label>Adicionar data de nascimento</Label>
+				<RadioButtonContainer>
+					<RadioButtonContent>
+						<RadioButton
+							value="no"
+							status={
+								useBirthDate === false ? 'checked' : 'unchecked'
+							}
+							onPress={() => setUseBirthDate(false)}
+						/>
+						<RadioButtonLabel>Não</RadioButtonLabel>
+					</RadioButtonContent>
+
+					<RadioButtonContent>
+						<RadioButton
+							value="yes"
+							status={
+								useBirthDate === true ? 'checked' : 'unchecked'
+							}
+							onPress={() => setUseBirthDate(true)}
+						/>
+						<RadioButtonLabel>Sim</RadioButtonLabel>
+					</RadioButtonContent>
+				</RadioButtonContainer>
+
 				{useBirthDate && (
 					<>
 						<Label>Data de nascimento</Label>
@@ -143,7 +164,11 @@ const AddPet: React.FC = () => {
 						<DateTimePicker
 							mode="single"
 							date={date}
-							onChange={onBirthDateChange}
+							onChange={change => {
+								if (change.date) {
+									setDate(new Date(String(change.date)));
+								}
+							}}
 						/>
 					</>
 				)}

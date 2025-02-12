@@ -41,7 +41,22 @@ const PetDetails: React.FC = () => {
 
 				if (petsSnapshot.exists) {
 					const pet = petsSnapshot.data() as IPet;
-					setPetInfo({ ...pet, id: petsSnapshot.id });
+
+					let birthDate: Date | null = null;
+
+					if (petsSnapshot.data()?.birth_date) {
+						birthDate = petsSnapshot.data()?.birth_date.toDate();
+					}
+
+					setPetInfo({
+						id: petsSnapshot.id,
+						name: pet.name,
+						breed: pet.breed,
+						species: pet.species,
+						weight: pet.weight,
+						birth_date: birthDate,
+						health_notes: pet.health_notes,
+					});
 				}
 			}
 		} catch (error) {

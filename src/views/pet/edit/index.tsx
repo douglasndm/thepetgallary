@@ -68,8 +68,17 @@ const EditPet: React.FC = () => {
 						setWeight(pet.weight || undefined);
 						setHealthNotes(pet.health_notes || undefined);
 
-						if (pet.birth_date) {
-							setDate(pet.birth_date);
+						let birthDate: Date | null = null;
+
+						if (petsSnapshot.data()?.birth_date) {
+							birthDate = petsSnapshot
+								.data()
+								?.birth_date.toDate();
+
+							if (birthDate) {
+								setDate(birthDate);
+								setUseBirthDate(true);
+							}
 						}
 					}
 				}
@@ -225,6 +234,35 @@ const EditPet: React.FC = () => {
 						onChangeText={setHealthNotes}
 					/>
 
+					<Label>Editar data de nascimento</Label>
+					<RadioButtonContainer>
+						<RadioButtonContent>
+							<RadioButton
+								value="no"
+								status={
+									useBirthDate === false
+										? 'checked'
+										: 'unchecked'
+								}
+								onPress={() => setUseBirthDate(false)}
+							/>
+							<RadioButtonLabel>Não</RadioButtonLabel>
+						</RadioButtonContent>
+
+						<RadioButtonContent>
+							<RadioButton
+								value="yes"
+								status={
+									useBirthDate === true
+										? 'checked'
+										: 'unchecked'
+								}
+								onPress={() => setUseBirthDate(true)}
+							/>
+							<RadioButtonLabel>Sim</RadioButtonLabel>
+						</RadioButtonContent>
+					</RadioButtonContainer>
+
 					{useBirthDate && (
 						<>
 							<Label>Data de nascimento</Label>
@@ -233,7 +271,9 @@ const EditPet: React.FC = () => {
 								mode="single"
 								date={date}
 								onChange={change => {
-									console.log(change);
+									if (change.date) {
+										setDate(new Date(String(change.date)));
+									}
 								}}
 							/>
 						</>
