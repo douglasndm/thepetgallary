@@ -1,5 +1,13 @@
 import React, { useCallback, useContext, useState } from 'react';
+import { NativeSyntheticEvent } from 'react-native';
+import ContextMenu, {
+	ContextMenuOnPressNativeEvent,
+} from 'react-native-context-menu-view';
 import LottieView from 'lottie-react-native';
+
+import { captureException } from '@services/exceptionsHandler';
+
+import { saveImageOnGallery } from '@utils/images/save';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
 
@@ -43,7 +51,6 @@ const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 		() => (
 			<PhotoContainer onPress={() => photoContext?.setCurrentPhoto(item)}>
 				<Photo
-					//source={demoPic}
 					source={{ uri: item.url }}
 					onLoadStart={onLoadStart}
 					onLoadEnd={onLoadEnd}
@@ -53,9 +60,30 @@ const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 		[item, photoContext]
 	);
 
+	const handleContextPress = useCallback(
+		async (e: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
+			if (e.nativeEvent.index === 0) {
+				try {
+					await saveImageOnGallery(item.url);
+				} catch (error) {
+					captureException({
+						error,
+						showAlert: true,
+					});
+				}
+			}
+		},
+		[item]
+	);
+
 	return (
 		<Container style={{ marginRight: index % 2 === 0 ? 10 : 0 }}>
-			<MemorizedImage />
+			<ContextMenu
+				actions={[{ title: 'Salvar na galeria' }]}
+				onPress={handleContextPress}
+			>
+				<MemorizedImage />
+			</ContextMenu>
 			{isLoading && <Loading />}
 		</Container>
 	);

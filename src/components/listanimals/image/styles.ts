@@ -10,4 +10,4 @@ export const lottieStyle = StyleSheet.create({
 	},
 });
 
-export const PhotoContainer = styled.TouchableOpacity``;
+export const PhotoContainer = styled.Pressable``;
