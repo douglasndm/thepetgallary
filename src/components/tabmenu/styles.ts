@@ -20,6 +20,16 @@ export const Content = styled.View`
 	width: 100%;
 `;
 
+export const ContentIOS = styled.View`
+	position: absolute;
+	bottom: -10px;
+
+	flex-direction: row;
+	justify-content: space-around;
+	padding: 5px 15px 25px 15px;
+	width: 100%;
+`;
+
 export const Button = styled.TouchableOpacity`
 	width: ${(Dimensions.get('window').width - 50) / 5}px;
 	justify-content: center;

@@ -5,5 +5,10 @@ module.exports = {
 				android: null, // Ignora no Android
 			},
 		},
+		'@react-native-community/blur': {
+			platforms: {
+				android: null, // Ignora no Android
+			},
+		},
 	},
 };
