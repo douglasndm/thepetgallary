@@ -7,7 +7,7 @@ const dogLoading = require('@animations/dog_loading.lottie');
 const catLoading = require('@animations/cat_loading.lottie');
 
 import { Container, Photo } from '../styles';
-import { PhotoContainer } from './styles';
+import { PhotoContainer, lottieStyle } from './styles';
 
 interface Props {
 	item: APIItem;
@@ -24,13 +24,7 @@ const Image: React.FC<Props> = ({ item, type = 'Dog', index }: Props) => {
 		return (
 			<LottieView
 				source={type === 'Cat' ? catLoading : dogLoading}
-				style={{
-					width: 170,
-					height: 170,
-					position: 'absolute',
-					backgroundColor: '#f8cdb9',
-					borderRadius: 8,
-				}}
+				style={lottieStyle.lottie}
 				autoPlay
 				loop
 			/>

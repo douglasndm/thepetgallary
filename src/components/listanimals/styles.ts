@@ -1,19 +1,17 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
-	width: 170px;
-	height: 170px;
+	width: 100%;
+	height: 500px;
 
 	margin-bottom: 10px;
-	border-radius: 8px;
 
 	background-color: pink;
 	align-items: center;
 `;
 
 export const Photo = styled.Image`
-	width: 170px;
-	height: 170px;
-
-	border-radius: 8px;
+	width: ${Dimensions.get('window').width}px;
+	height: 500px;
 `;

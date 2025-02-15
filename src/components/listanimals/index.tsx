@@ -46,13 +46,14 @@ const ListAnimals: React.FC<Props> = ({
 			<FlatList
 				data={images}
 				ListHeaderComponent={ListHeaderComponent}
-				numColumns={2}
+				numColumns={1}
 				renderItem={({ item, index }) => (
 					<Image item={item} type={imageType} index={index} />
 				)}
 				onScroll={onScroll}
 				ListFooterComponent={<Padding />}
-				columnWrapperStyle={{ justifyContent: 'center' }}
+
+				//columnWrapperStyle={{ justifyContent: 'center' }}
 			/>
 		</>
 	);
