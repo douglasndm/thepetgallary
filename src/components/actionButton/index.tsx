@@ -1,4 +1,5 @@
 import React from 'react';
+import { ViewStyle } from 'react-native';
 
 import {
 	ActionButtonContainer,
@@ -10,13 +11,14 @@ interface Props {
 	onPress: () => void;
 	iconName: string;
 	title: string;
+	style?: ViewStyle;
 }
 
 const ActionButton: React.FC<Props> = (props: Props) => {
-	const { onPress, iconName, title } = props;
+	const { onPress, iconName, title, style } = props;
 
 	return (
-		<ActionButtonContainer onPress={onPress}>
+		<ActionButtonContainer onPress={onPress} style={style}>
 			<ActionButtonIcon name={iconName} />
 			<ActionButtonText>{title}</ActionButtonText>
 		</ActionButtonContainer>
