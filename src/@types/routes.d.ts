@@ -17,5 +17,18 @@ type AppRoutes = {
 		id: string;
 	};
 
-	Vaccines: {};
+	VaccinesList: {
+		petId: string;
+	};
+	VaccinesAdd: {
+		petId: string;
+	};
+	VaccinesEdit: {
+		petId: string;
+		id: string;
+	};
+	VaccinesDetails: {
+		petId: string;
+		id: string;
+	};
 };
