@@ -14,7 +14,10 @@ import PetAdd from '@views/pet/add';
 import PetEdit from '@views/pet/edit';
 import PetDetails from '@views/pet/details';
 
-import Vaccines from '@views/vaccines';
+import VaccinesList from '@views/vaccines/list';
+import VaccinesAdd from '@views/vaccines/add';
+import VaccinesEdit from '@views/vaccines/edit';
+import VaccinesDetails from '@views/vaccines/details';
 
 const Stack = createNativeStackNavigator<AppRoutes>();
 
@@ -34,7 +37,10 @@ const Routes: React.FC = () => {
 			<Stack.Screen name="PetEdit" component={PetEdit} />
 			<Stack.Screen name="PetDetails" component={PetDetails} />
 
-			<Stack.Screen name="Vaccines" component={Vaccines} />
+			<Stack.Screen name="VaccinesList" component={VaccinesList} />
+			<Stack.Screen name="VaccinesAdd" component={VaccinesAdd} />
+			<Stack.Screen name="VaccinesEdit" component={VaccinesEdit} />
+			<Stack.Screen name="VaccinesDetails" component={VaccinesDetails} />
 		</Stack.Navigator>
 	);
 };
