@@ -4,7 +4,7 @@ type AppRoutes = {
 
 	Home: {};
 	PlacesList: {};
-	Menu: {};
+	About: {};
 	Login: {};
 	Profile: {};
 

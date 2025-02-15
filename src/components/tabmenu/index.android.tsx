@@ -31,8 +31,8 @@ const TabMenu: React.FC<Props> = (props: Props) => {
 		navigate('PetList', {});
 	}, [navigate]);
 
-	const navigateMenu = useCallback(() => {
-		navigate('Menu', {});
+	const navigateAbout = useCallback(() => {
+		navigate('About', {});
 	}, [navigate]);
 
 	return (
@@ -67,10 +67,10 @@ const TabMenu: React.FC<Props> = (props: Props) => {
 					</Button>
 				)}
 
-				<Button onPress={navigateMenu}>
+				<Button onPress={navigateAbout}>
 					<Icon
 						source={require('@assets/images/navigation-menu-1.png')}
-						isSelected={props.currentRoute === 'Menu'}
+						isSelected={props.currentRoute === 'About'}
 					/>
 				</Button>
 			</Content>

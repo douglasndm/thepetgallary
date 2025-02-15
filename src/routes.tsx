@@ -5,7 +5,7 @@ import DogsView from '@views/photos/list/dogs';
 import CatsView from '@views/photos/list/cats';
 
 import PlacesList from '@views/places/list';
-import Menu from '@views/menu';
+import About from '@views/about';
 import Login from '@views/auth/login';
 import Profile from '@views/profile';
 
@@ -28,7 +28,7 @@ const Routes: React.FC = () => {
 			<Stack.Screen name="CatsView" component={CatsView} />
 
 			<Stack.Screen name="PlacesList" component={PlacesList} />
-			<Stack.Screen name="Menu" component={Menu} />
+			<Stack.Screen name="About" component={About} />
 			<Stack.Screen name="Login" component={Login} />
 			<Stack.Screen name="Profile" component={Profile} />
 

@@ -5,7 +5,7 @@ import { getAuth } from '@react-native-firebase/auth';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SFSymbol } from 'react-native-sfsymbols';
 
-import { Container, Content, Button, Icon, MaterialIcons } from './styles';
+import { Container, Content, Button } from './styles';
 
 interface Props {
 	currentRoute: string | undefined;
@@ -32,8 +32,8 @@ const TabMenu: React.FC<Props> = (props: Props) => {
 		navigate('PetList', {});
 	}, [navigate]);
 
-	const navigateMenu = useCallback(() => {
-		navigate('Menu', {});
+	const navigateAbout = useCallback(() => {
+		navigate('About', {});
 	}, [navigate]);
 
 	return (
@@ -109,16 +109,16 @@ const TabMenu: React.FC<Props> = (props: Props) => {
 					</Button>
 				)}
 
-				<Button onPress={navigateMenu}>
+				<Button onPress={navigateAbout}>
 					<SFSymbol
 						name={
-							props.currentRoute === 'Menu'
+							props.currentRoute === 'About'
 								? 'info.circle.fill'
 								: 'info.circle'
 						}
 						scale="large"
 						color={
-							props.currentRoute === 'Menu' ? '#FFFFFF' : 'black'
+							props.currentRoute === 'About' ? '#FFFFFF' : 'black'
 						}
 						size={30}
 					/>
