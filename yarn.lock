@@ -10359,6 +10359,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-sfsymbols@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "react-native-sfsymbols@npm:1.2.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/3d424fed7785c359188eaa23bf08886860cc24ebb56cfd9b6241fc2fd5b20cb8104a43eade44ae90ce158a44253797ae60715b4076c7140bb59d1f1fada06835
+  languageName: node
+  linkType: hard
+
 "react-native-share@npm:^12.0.7":
   version: 12.0.7
   resolution: "react-native-share@npm:12.0.7"
@@ -11720,6 +11730,7 @@ __metadata:
     react-native-radio-buttons-group: "npm:^3.1.0"
     react-native-safe-area-context: "npm:^5.2.0"
     react-native-screens: "npm:^4.6.0"
+    react-native-sfsymbols: "npm:^1.2.2"
     react-native-share: "npm:^12.0.7"
     react-native-svg: "npm:^15.11.1"
     react-native-svg-transformer: "npm:^1.5.0"

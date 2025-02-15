@@ -2742,6 +2742,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-sfsymbols (1.2.2):
+    - React
   - react-native-vector-icons (11.0.0):
     - DoubleConversion
     - glog
@@ -3305,6 +3307,7 @@ DEPENDENCIES:
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-sfsymbols (from `../node_modules/react-native-sfsymbols`)
   - "react-native-vector-icons (from `../node_modules/@react-native-vector-icons/common`)"
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -3473,6 +3476,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-sfsymbols:
+    :path: "../node_modules/react-native-sfsymbols"
   react-native-vector-icons:
     :path: "../node_modules/@react-native-vector-icons/common"
   React-nativeconfig:
@@ -3637,6 +3642,7 @@ SPEC CHECKSUMS:
   react-native-get-random-values: 21325b2244dfa6b58878f51f9aa42821e7ba3d06
   react-native-netinfo: f0a9899081c185db1de5bb2fdc1c88c202a059ac
   react-native-safe-area-context: 0b43456abcaaa3c8323bbfafe9c5f0f9511219d2
+  react-native-sfsymbols: ca90d8bb7d6ad06523bf833f2becae22b97fb056
   react-native-vector-icons: 1a1d163aff5e000ccfd0481bbf2c7120e42aa6b2
   React-nativeconfig: 1290b585850b8465f56f54a48b04968eefed0dd4
   React-NativeModulesApple: d8120bb2e641a064db0390c9f40cc4453a307c66
