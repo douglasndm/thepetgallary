@@ -7,6 +7,7 @@ import { captureException } from '@services/exceptionsHandler';
 
 import Header from '@components/header';
 import Loading from '@components/loading';
+import Button from '@components/button';
 
 import {
 	Container,
@@ -156,6 +157,11 @@ const PetDetails: React.FC = () => {
 					)}
 				</Content>
 			)}
+
+			<Button
+				title="Ver vacinas"
+				onPress={() => navigate('VaccinesList', { petId: params.id })}
+			/>
 		</Container>
 	);
 };

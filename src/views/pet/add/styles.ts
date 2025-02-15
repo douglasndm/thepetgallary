@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { RadioButton as PaperRadioButton } from 'react-native-paper';
 
 export const Container = styled.ScrollView.attrs(() => ({
 	contentInsetAdjustmentBehavior: 'automatic',
