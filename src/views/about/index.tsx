@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Linking } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { getAuth } from '@react-native-firebase/auth';
 import LottieView from 'lottie-react-native';
 
 import dogDancing from '@animations/dog_dancing.lottie';
 
 import Header from '@components/header';
+import Button from '@components/button';
 import Padding from '@components/padding';
 
 import {
@@ -19,6 +23,12 @@ import {
 } from './styles';
 
 const Menu: React.FC = () => {
+	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
+
+	const navigateToAccount = useCallback(() => {
+		navigate('Profile', {});
+	}, [navigate]);
+
 	return (
 		<Container>
 			<Header />
@@ -162,6 +172,15 @@ const Menu: React.FC = () => {
 					</Attibution>
 				</AttibuitionContainer>
 			</Content>
+
+			{getAuth().currentUser && (
+				<Button
+					title="Ver informações da conta"
+					style={{ marginTop: 20 }}
+					onPress={navigateToAccount}
+				/>
+			)}
+
 			<Padding />
 		</Container>
 	);

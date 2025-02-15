@@ -1,6 +1,7 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { getAuth } from '@react-native-firebase/auth';
 import LottieView from 'lottie-react-native';
 
 import catLogo from '@animations/cat_logo.lottie';
@@ -20,12 +21,6 @@ const Header: React.FC = () => {
 		useNavigation<NativeStackNavigationProp<AppRoutes>>();
 
 	const animRef = useRef<LottieView>(null);
-
-	const isProfile = useMemo(() => {
-		if (name === 'Profile') return true;
-		if (name === 'Login') return true;
-		return false;
-	}, [name]);
 
 	const handleLogin = useCallback(() => {
 		navigate('Login', {});
@@ -57,9 +52,13 @@ const Header: React.FC = () => {
 				/>
 			</Content>
 
-			<ButtonIcon onPress={handleLogin}>
-				<Icon name={isProfile ? 'person' : 'person-outline'} />
-			</ButtonIcon>
+			{!getAuth().currentUser && (
+				<ButtonIcon onPress={handleLogin}>
+					<Icon
+						name={name === 'Login' ? 'person' : 'person-outline'}
+					/>
+				</ButtonIcon>
+			)}
 		</Container>
 	);
 };
