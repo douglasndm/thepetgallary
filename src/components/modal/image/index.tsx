@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { Modal } from 'react-native';
-import { CameraRoll } from '@react-native-camera-roll/camera-roll';
-import RNFetchBlob from 'rn-fetch-blob';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
+import FlashMessage from 'react-native-flash-message';
+
+import { captureException } from '@services/exceptionsHandler';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
 
-import { requestSavePermission } from '@utils/permissions/check';
+import { saveImageOnGallery } from '@utils/images/save';
 
 import {
 	CloseButton,
@@ -36,45 +36,12 @@ const image: React.FC = () => {
 
 		try {
 			const { url } = photoContext?.currentPhoto;
-			const extension = url.split('.').pop();
 
-			const hasPermission = await requestSavePermission();
-
-			if (!hasPermission) {
-				showMessage({
-					message:
-						'O aplicativo não tem permissão para salvar arquivos no seu telefone',
-					type: 'danger',
-				});
-				return;
-			}
-
-			const config = RNFetchBlob.config({
-				fileCache: true,
-				appendExt: extension, // Extensão do arquivo
-			});
-
-			const result = await config.fetch('GET', url);
-
-			await CameraRoll.saveAsset(result.path(), {
-				type: 'photo',
-				album: 'The Pet Gallery',
-			});
+			await saveImageOnGallery(url);
 
 			photoContext.setCurrentPhoto(null);
-
-			showMessage({
-				message: 'Imagem salva com sucesso!',
-				type: 'success',
-			});
 		} catch (error) {
-			if (error instanceof Error) {
-				console.error(error);
-				showMessage({
-					message: error.message,
-					type: 'danger',
-				});
-			}
+			captureException({ error, showAlert: true });
 		}
 	}, [photoContext]);
 
@@ -89,7 +56,7 @@ const image: React.FC = () => {
 	return (
 		<Modal
 			visible={!!photoContext?.currentPhoto}
-			onSwipeComplete={() => clearPhoto()}
+			onRequestClose={clearPhoto}
 		>
 			<Container>
 				<CloseButton onPress={clearPhoto}>
