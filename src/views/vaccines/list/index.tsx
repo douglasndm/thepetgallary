@@ -90,7 +90,7 @@ const VaccinesList: React.FC = () => {
 
 	const navigateToVaccine = useCallback(
 		(id: string) => {
-			navigate('VaccinesEdit', { petId: params.petId, id });
+			navigate('VaccinesDetails', { petId: params.petId, id });
 		},
 		[params.petId, navigate]
 	);
