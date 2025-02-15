@@ -2980,9 +2980,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-google-signin/google-signin@npm:^13.1.0":
-  version: 13.1.0
-  resolution: "@react-native-google-signin/google-signin@npm:13.1.0"
+"@react-native-google-signin/google-signin@npm:^13.2.0":
+  version: 13.2.0
+  resolution: "@react-native-google-signin/google-signin@npm:13.2.0"
   peerDependencies:
     expo: ">=50.0.0"
     react: "*"
@@ -2993,7 +2993,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/f3e4032e8c5ef36c180f17a5c01cd054c0ea732def808f06871a768204bfdc5a3cdcbc3fa6f1d57aa564b5adb71cf861a3420f5c48d10e2ed9a0e6556adc498b
+  checksum: 10c0/c876a0989286e33f5244f45589ee1193419772b09e1b3fc8914f6fc4faca2fb860e28b1ef7bc9f6170823cb848b9dd98bf7b7496b44370de772c988cb08103a9
   languageName: node
   linkType: hard
 
@@ -11715,7 +11715,7 @@ __metadata:
     "@react-native-firebase/auth": "npm:^21.10.0"
     "@react-native-firebase/firestore": "npm:^21.10.0"
     "@react-native-firebase/messaging": "npm:^21.10.0"
-    "@react-native-google-signin/google-signin": "npm:^13.1.0"
+    "@react-native-google-signin/google-signin": "npm:^13.2.0"
     "@react-native-vector-icons/common": "npm:^11.0.0"
     "@react-native-vector-icons/ionicons": "npm:^7.4.0"
     "@react-native-vector-icons/material-design-icons": "npm:^7.4.47"

@@ -3106,7 +3106,7 @@ PODS:
     - FirebaseCoreExtension
     - React-Core
     - RNFBApp
-  - RNGoogleSignin (13.1.0):
+  - RNGoogleSignin (13.2.0):
     - DoubleConversion
     - glog
     - GoogleSignIn (~> 7.1)
@@ -3713,7 +3713,7 @@ SPEC CHECKSUMS:
   RNFBAuth: 38e709123d2f4391618c737ec313d84bb6e0fdf2
   RNFBFirestore: 1f0eb874daaefbaf5fa070bdfe0d83dc169ff843
   RNFBMessaging: 9e362929182d7d5dbc1b0f882a602bc2313264e2
-  RNGoogleSignin: 8ef36e8b5f531e85fb216eeab9f5667ac647a968
+  RNGoogleSignin: e548e9a67bb94980df514f71e107a13d6ebe40d3
   RNPermissions: 68f24be3becf17f8b33cda7c72570d36d99a1c8d
   RNScreens: 6a595af73186eb6b85dfd82ded47d67989ae14b5
   RNSentry: fc2876785d4648b430355b5ca4c3e37b51ec6735
