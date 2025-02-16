@@ -14,6 +14,8 @@ import Button from '@components/button';
 import Loading from '@components/loading';
 import Padding from '@components/padding';
 
+import DeletePet from './delete';
+
 import { Container, Content, Input, Label } from '../add/styles';
 
 const EditPet: React.FC = () => {
@@ -21,6 +23,7 @@ const EditPet: React.FC = () => {
 	const { params } = useRoute<RouteProp<AppRoutes, 'PetEdit'>>();
 
 	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false);
 
 	const [name, setName] = useState<string>('');
 
@@ -118,29 +121,6 @@ const EditPet: React.FC = () => {
 		params,
 	]);
 
-	const handleDelete = useCallback(async () => {
-		try {
-			setIsLoading(true);
-
-			const petsReference = await getUserPetsReference();
-
-			if (petsReference) {
-				await petsReference.doc(params.id).delete();
-			}
-
-			showMessage({
-				message: 'Pet excluido com sucesso',
-				type: 'success',
-			});
-
-			pop(2);
-		} catch (error) {
-			captureException({ error, showAlert: true });
-		} finally {
-			setIsLoading(false);
-		}
-	}, [params.id, pop]);
-
 	const radioButtons: RadioButtonProps[] = useMemo(
 		() => [
 			{
@@ -197,7 +177,7 @@ const EditPet: React.FC = () => {
 			<ActionButton
 				iconName="trash-outline"
 				title="Excluir pet"
-				onPress={handleDelete}
+				onPress={() => setShowDeleteDialog(true)}
 			/>
 
 			{isLoading ? (
@@ -279,6 +259,11 @@ const EditPet: React.FC = () => {
 				</Content>
 			)}
 
+			<DeletePet
+				visible={showDeleteDialog}
+				setVisible={setShowDeleteDialog}
+				petId={params.id}
+			/>
 			<Padding />
 		</Container>
 	);
