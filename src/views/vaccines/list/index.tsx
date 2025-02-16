@@ -82,7 +82,7 @@ const VaccinesList: React.FC = () => {
 		});
 
 		return unsubscribe;
-	}, [addListener]);
+	}, [addListener, loadData]);
 
 	const navigateToAddVaccine = useCallback(() => {
 		navigate('VaccinesAdd', { petId: params.petId });

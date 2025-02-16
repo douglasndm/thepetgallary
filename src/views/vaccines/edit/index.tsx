@@ -12,8 +12,11 @@ import { captureException } from '@services/exceptionsHandler';
 import { formatDate } from '@utils/data';
 
 import Header from '@components/header';
+import ActionButton from '@components/actionButton';
 import Button from '@components/button';
 import Loading from '@components/loading';
+
+import DeleteVaccine from './delete';
 
 import {
 	Container,
@@ -40,6 +43,8 @@ const VaccinesEdit: React.FC = () => {
 
 	const [showUseDate, setShowUseDate] = useState(false);
 	const [showUseNextDate, setShowUseNextDate] = useState(false);
+
+	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
 	const [name, setName] = useState('');
 	const [administeredDate, setAdministeredDate] = useState<Date>(new Date());
@@ -153,6 +158,11 @@ const VaccinesEdit: React.FC = () => {
 		<Container>
 			<Header />
 
+			<ActionButton
+				onPress={() => setDeleteModalVisible(true)}
+				title="Excluir vacina"
+				iconName="trash"
+			/>
 			{isLoading ? (
 				<Loading />
 			) : (
@@ -267,6 +277,13 @@ const VaccinesEdit: React.FC = () => {
 					/>
 				</View>
 			</Modal>
+
+			<DeleteVaccine
+				visible={deleteModalVisible}
+				setVisible={setDeleteModalVisible}
+				petId={params.petId}
+				vaccineId={params.id}
+			/>
 		</Container>
 	);
 };
