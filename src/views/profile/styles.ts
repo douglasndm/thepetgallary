@@ -1,9 +1,17 @@
 import styled from 'styled-components/native';
+import { Surface } from 'react-native-paper';
 
-export const Container = styled.View``;
+export const Container = styled.View`
+	flex: 1;
+`;
 
-export const Content = styled.View`
-	padding: 5px 15px;
+export const Content = styled(Surface).attrs(() => ({
+	elevation: 2,
+}))`
+	padding: 15px 20px;
+	margin: 0 15px;
+	border-radius: 12px;
+	background-color: #ffff;
 `;
 
 export const Name = styled.Text`

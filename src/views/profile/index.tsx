@@ -6,12 +6,15 @@ import { getAuth, FirebaseAuthTypes } from '@react-native-firebase/auth';
 import Header from '@components/header';
 import Button from '@components/button';
 
+import DeleteAccount from './Delete';
+
 import { Container, Content, Name, Email } from './styles';
 
 const Profile: React.FC = () => {
 	const { replace } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
 
 	const [user, setUser] = useState<FirebaseAuthTypes.User | null>();
+	const [showDeleteModal, setShowDeleteModal] = useState(false);
 
 	const handleLogout = useCallback(async () => {
 		await getAuth().signOut();
@@ -25,6 +28,10 @@ const Profile: React.FC = () => {
 		});
 	}, []);
 
+	const switchShowDeleteModal = useCallback(() => {
+		setShowDeleteModal(prevValue => !prevValue);
+	}, []);
+
 	return (
 		<Container>
 			<Header />
@@ -34,7 +41,18 @@ const Profile: React.FC = () => {
 				<Email>{user?.email}</Email>
 
 				<Button title="Sair da conta" onPress={handleLogout} />
+
+				<Button
+					title="Apagar conta"
+					onPress={switchShowDeleteModal}
+					style={{ marginTop: 10 }}
+				/>
 			</Content>
+
+			<DeleteAccount
+				visible={showDeleteModal}
+				setVisible={setShowDeleteModal}
+			/>
 		</Container>
 	);
 };
