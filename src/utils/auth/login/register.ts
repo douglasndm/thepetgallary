@@ -10,9 +10,9 @@ import DeviceInfo from 'react-native-device-info';
 async function registerLogin(): Promise<void> {
 	const user = getAuth().currentUser;
 
-	if (user?.email) {
+	if (user) {
 		const userCollection = collection(getFirestore(), 'users');
-		const userDoc = doc(userCollection, user.email);
+		const userDoc = doc(userCollection, user.uid);
 
 		const device_brand = await DeviceInfo.getBrand();
 		const device_model = await DeviceInfo.getModel();
