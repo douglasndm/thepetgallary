@@ -3082,6 +3082,8 @@ PODS:
     - React-Core
   - RNAppleAuthentication (2.4.0):
     - React-Core
+  - RNDeviceInfo (14.0.4):
+    - React-Core
   - RNFBAnalytics (21.10.0):
     - Firebase/Analytics (= 11.8.0)
     - React-Core
@@ -3365,6 +3367,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAppCheck (from `../node_modules/@react-native-firebase/app-check`)"
@@ -3571,6 +3574,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/rn-fetch-blob"
   RNAppleAuthentication:
     :path: "../node_modules/@invertase/react-native-apple-authentication"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNFBAnalytics:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
@@ -3707,6 +3712,7 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNAppleAuthentication: e00c76acb03351f5544373c78fa7f359bef6d5d3
+  RNDeviceInfo: feea80a690d2bde1fe51461cf548039258bd03f2
   RNFBAnalytics: f277c94d809b63b5ce166e6ea612282cd08425bd
   RNFBApp: 958554cdc25d8405f4818f16f9474754d610a305
   RNFBAppCheck: 0e249881fcee54da0656a089270f78f406b796e9

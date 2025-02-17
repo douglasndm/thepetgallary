@@ -16,6 +16,7 @@ import {
 	signInWithAppleAndroid,
 } from '@utils/auth/login/apple';
 import { signInWithGoogle } from '@utils/auth/login/google';
+import { registerLogin } from '@utils/auth/login/register';
 
 import GoogleButtonSVG from '@assets/images/buttons/signin/google_pt-br.svg';
 
@@ -41,6 +42,7 @@ const Login: React.FC = () => {
 			setIsSigning(true);
 
 			await signInWithGoogle();
+			await registerLogin();
 		} catch (error) {
 			captureException({
 				error,
@@ -60,6 +62,8 @@ const Login: React.FC = () => {
 			} else {
 				await signInWithApple();
 			}
+
+			await registerLogin();
 		} catch (error) {
 			captureException({
 				error,
