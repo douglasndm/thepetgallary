@@ -58,7 +58,7 @@ const DeletePet: React.FC<Props> = (props: Props) => {
 
 			<Dialog.Content>
 				<Text variant="bodyMedium">
-					Você vai excluir esse pet, essa operação nao pode ser
+					Você vai excluir esse pet, essa operação não pode ser
 					desfeita
 				</Text>
 			</Dialog.Content>

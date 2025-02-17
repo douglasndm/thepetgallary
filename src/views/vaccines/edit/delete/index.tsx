@@ -64,7 +64,7 @@ const DeleteVaccine: React.FC<Props> = (props: Props) => {
 
 			<Dialog.Content>
 				<Text variant="bodyMedium">
-					Você vai excluir essa vacina, essa operação nao pode ser
+					Você vai excluir essa vacina, essa operação não pode ser
 					desfeita
 				</Text>
 			</Dialog.Content>
