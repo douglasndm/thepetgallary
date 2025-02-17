@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { collection, doc } from '@react-native-firebase/firestore';
+import { collection, doc, getDocs } from '@react-native-firebase/firestore';
 
 import { getUserPetsReference } from '@services/firebase/firestore';
 import { captureException } from '@services/exceptionsHandler';
@@ -40,7 +40,7 @@ const VaccinesList: React.FC = () => {
 				const petRef = doc(petsReference, params.petId);
 				const vaccinesCollection = collection(petRef, 'vaccines');
 
-				vaccinesCollection.onSnapshot(snapshot => {
+				getDocs(vaccinesCollection).then(snapshot => {
 					const localVaccines: IVaccine[] = [];
 
 					snapshot.docs.forEach(localDoc => {
