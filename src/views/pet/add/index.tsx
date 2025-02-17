@@ -35,9 +35,12 @@ const AddPet: React.FC = () => {
 		try {
 			setIsSaving(true);
 
+			const localSpecies =
+				species === 'cat' || species === 'dog' ? species : null;
+
 			await savePet({
 				name,
-				species: species as 'cat' | 'dog' | null,
+				species: localSpecies,
 				breed,
 				birth_date: useBirthDate ? date : null,
 				weight: weight ? Number(weight) : null,
