@@ -67,7 +67,7 @@ const Menu: React.FC = () => {
 				<AttibuitionContainer>
 					<Attibution>
 						Quer enviar um lugar de adocão ou abrigos que precisam
-						de doação? Entre em contato comigo no LinkedIn{' '}
+						de doação? Entre em contato comigo no{' '}
 						<AttibutionLink
 							onPress={() =>
 								Linking.openURL(
@@ -75,7 +75,17 @@ const Menu: React.FC = () => {
 								)
 							}
 						>
-							aqui
+							LinkedIn
+						</AttibutionLink>{' '}
+						ou no{' '}
+						<AttibutionLink
+							onPress={() =>
+								Linking.openURL(
+									'https://bsky.app/profile/douglasndm.dev'
+								)
+							}
+						>
+							Bluesky
 						</AttibutionLink>
 					</Attibution>
 				</AttibuitionContainer>
