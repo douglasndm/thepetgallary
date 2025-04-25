@@ -106,14 +106,50 @@ const PlacesList: React.FC = () => {
 								{item.city && (
 									<PlaceCityText>{item.city}</PlaceCityText>
 								)}
-								<PlaceButton
-									onPress={() =>
-										Linking.openURL(item.instagram)
-									}
-								>
-									<Icon name="logo-instagram" size={30} />
-									<PlaceName>{item.name}</PlaceName>
-								</PlaceButton>
+
+								{item.instagram && (
+									<PlaceButton
+										onPress={() =>
+											Linking.openURL(item.instagram)
+										}
+									>
+										<Icon name="logo-instagram" size={30} />
+										<PlaceName>{item.name}</PlaceName>
+									</PlaceButton>
+								)}
+
+								{item.facebook && (
+									<PlaceButton
+										onPress={() =>
+											Linking.openURL(item.facebook)
+										}
+									>
+										<Icon name="logo-facebook" size={30} />
+										<PlaceName>{item.name}</PlaceName>
+									</PlaceButton>
+								)}
+
+								{item.whatsapp && (
+									<PlaceButton
+										onPress={() =>
+											Linking.openURL(item.whatsapp)
+										}
+									>
+										<Icon name="logo-whatsapp" size={30} />
+										<PlaceName>{item.name}</PlaceName>
+									</PlaceButton>
+								)}
+
+								{item.url && (
+									<PlaceButton
+										onPress={() =>
+											Linking.openURL(item.url)
+										}
+									>
+										<Icon name="globe-outline" size={30} />
+										<PlaceName>{item.name}</PlaceName>
+									</PlaceButton>
+								)}
 							</PlaceCityContainer>
 						))}
 					</PlaceStateContainer>
