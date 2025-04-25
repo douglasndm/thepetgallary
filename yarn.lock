@@ -3750,6 +3750,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/react-native@npm:^3.0.0":
+  version: 3.0.5
+  resolution: "@tsconfig/react-native@npm:3.0.5"
+  checksum: 10c0/a82a69b11c1427859ccc70be42b6c348f5829b9066e45c1d281270fc29bfb70949fdbc236d55282f533468ecc621e5ce6df181928094686271ffea3584c0e8e6
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.1.14":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -11566,6 +11573,7 @@ __metadata:
     "@react-navigation/native-stack": "npm:^7.3.10"
     "@rocketseat/eslint-config": "npm:^2.2.2"
     "@sentry/react-native": "npm:^6.11.0"
+    "@tsconfig/react-native": "npm:^3.0.0"
     "@types/jest": "npm:^29.5.13"
     "@types/react": "npm:^19.0.0"
     "@types/react-native-get-random-values": "npm:^1"
