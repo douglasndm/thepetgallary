@@ -1,7 +1,7 @@
 {
 	"name": "thepetgallery",
-	"version": "1.3.2",
-	"build": "15",
+	"version": "1.3.3",
+	"build": "16",
 	"private": true,
 	"scripts": {
 		"android": "react-native run-android",
