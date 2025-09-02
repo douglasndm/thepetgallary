@@ -1,7 +1,4 @@
-/**
- * @format
- */
-
+import 'expo-dev-client';
 import { AppRegistry } from 'react-native';
 import * as Sentry from '@sentry/react-native';
 
