@@ -6050,7 +6050,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:^54.0.0":
+"expo@npm:^54.0.10":
   version: 54.0.10
   resolution: "expo@npm:54.0.10"
   dependencies:
@@ -10329,7 +10329,7 @@ __metadata:
     eas-build-cache-provider: "npm:^16.4.2"
     eslint: "npm:^8.57.1"
     eslint-plugin-prettier: "npm:^5.5.4"
-    expo: "npm:^54.0.0"
+    expo: "npm:^54.0.10"
     expo-dev-client: "npm:~6.0.12"
     lottie-react-native: "npm:~7.3.1"
     prettier: "npm:3.6.2"
