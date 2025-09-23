@@ -10119,9 +10119,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:6.1.17":
-  version: 6.1.17
-  resolution: "styled-components@npm:6.1.17"
+"styled-components@npm:^6.1.19":
+  version: 6.1.19
+  resolution: "styled-components@npm:6.1.19"
   dependencies:
     "@emotion/is-prop-valid": "npm:1.2.2"
     "@emotion/unitless": "npm:0.8.1"
@@ -10135,27 +10135,7 @@ __metadata:
   peerDependencies:
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
-  checksum: 10c0/87f35173c5fc2291ddba7ed8224d19fe6872d056a577f55fe130248f5ea23e5c48c012e881fa1ad93df60b56a12c1c2d553f628e204f090189221734927e50b0
-  languageName: node
-  linkType: hard
-
-"styled-components@patch:styled-components@npm%3A6.1.17#~/.yarn/patches/styled-components-npm-6.1.17-8947f06c67.patch":
-  version: 6.1.17
-  resolution: "styled-components@patch:styled-components@npm%3A6.1.17#~/.yarn/patches/styled-components-npm-6.1.17-8947f06c67.patch::version=6.1.17&hash=73aac1"
-  dependencies:
-    "@emotion/is-prop-valid": "npm:1.2.2"
-    "@emotion/unitless": "npm:0.8.1"
-    "@types/stylis": "npm:4.2.5"
-    css-to-react-native: "npm:3.2.0"
-    csstype: "npm:3.1.3"
-    postcss: "npm:8.4.49"
-    shallowequal: "npm:1.1.0"
-    stylis: "npm:4.3.2"
-    tslib: "npm:2.6.2"
-  peerDependencies:
-    react: ">= 16.8.0"
-    react-dom: ">= 16.8.0"
-  checksum: 10c0/49ea1d94f0403aba1f33ad6c1a19e0e51a2c89e76d49e5cebf198d7bcc410cb2926245902ef6050a2dd0ab03454e68b75413d57d67f0957ce0f64a2a8795e37a
+  checksum: 10c0/8d20427a5debe54bfa3b55f79af2a3577551ed7f1d1cd34df986b73fd01ac519f9081b7737cc1f76e12fbc483fa50551e55be0bc984296e623cc6a2364697cd8
   languageName: node
   linkType: hard
 
@@ -10406,7 +10386,7 @@ __metadata:
     react-native-ui-datepicker: "npm:^3.1.2"
     reactotron-react-native: "npm:^5.1.13"
     rn-fetch-blob: "npm:^0.12.0"
-    styled-components: "patch:styled-components@npm%3A6.1.17#~/.yarn/patches/styled-components-npm-6.1.17-8947f06c67.patch"
+    styled-components: "npm:^6.1.19"
     tsx: "npm:^4.20.5"
     typescript: "npm:~5.9.2"
     uuid: "npm:^13.0.0"
