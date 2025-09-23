@@ -1,6 +1,7 @@
 import { getApp } from '@react-native-firebase/app';
 import appCheck, { initializeAppCheck } from '@react-native-firebase/app-check';
-import EnvConfig from 'react-native-config';
+
+import EnvConfig from '@services/env';
 
 const rnfbProvider = appCheck().newReactNativeFirebaseAppCheckProvider();
 rnfbProvider.configure({

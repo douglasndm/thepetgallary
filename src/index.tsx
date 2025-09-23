@@ -4,7 +4,6 @@ import {
 	NavigationContainerRef,
 } from '@react-navigation/native';
 import * as Sentry from '@sentry/react-native';
-import EnvConfig from 'react-native-config';
 import { getAnalytics } from '@react-native-firebase/analytics';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
@@ -13,6 +12,7 @@ import { PaperProvider } from 'react-native-paper';
 import FlashMessage from 'react-native-flash-message';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
+import EnvConfig from '@services/env';
 import '@services/firebase/appchecker';
 
 import '@utils/permissions/notifications';

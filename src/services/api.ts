@@ -1,5 +1,6 @@
-import EnvConfig from 'react-native-config';
 import axios from 'axios';
+
+import EnvConfig from '@services/env';
 
 interface fetchPicturesProps {
 	type: 'cat' | 'dog';

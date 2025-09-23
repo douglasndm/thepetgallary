@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/react-native';
-import EnvConfig from 'react-native-config';
+
+import EnvConfig from '@services/env';
 
 if (!__DEV__) {
 	Sentry.init({
