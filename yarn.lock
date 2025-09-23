@@ -3100,6 +3100,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/metro-babel-transformer@npm:0.81.4":
+  version: 0.81.4
+  resolution: "@react-native/metro-babel-transformer@npm:0.81.4"
+  dependencies:
+    "@babel/core": "npm:^7.25.2"
+    "@react-native/babel-preset": "npm:0.81.4"
+    hermes-parser: "npm:0.29.1"
+    nullthrows: "npm:^1.1.1"
+  peerDependencies:
+    "@babel/core": "*"
+  checksum: 10c0/a301d9cd9234942776d7ec94d442c37450477ff4267ef2b56d2bc8cc0bdd83e4258fe7f88092ce3bc4f100a32dfd831b398cdd15e614a6e28491bc4fbfda6c6b
+  languageName: node
+  linkType: hard
+
+"@react-native/metro-config@npm:0.81.4":
+  version: 0.81.4
+  resolution: "@react-native/metro-config@npm:0.81.4"
+  dependencies:
+    "@react-native/js-polyfills": "npm:0.81.4"
+    "@react-native/metro-babel-transformer": "npm:0.81.4"
+    metro-config: "npm:^0.83.1"
+    metro-runtime: "npm:^0.83.1"
+  checksum: 10c0/ae2b359398dda8c1ebe63f0361dbc77f417c543f78f89a230eb554c89099e8a06b33aabf9640da3b8828bc89af614006d3280b104bfbdab0324fa084dbc7ebc2
+  languageName: node
+  linkType: hard
+
 "@react-native/normalize-colors@npm:0.81.4":
   version: 0.81.4
   resolution: "@react-native/normalize-colors@npm:0.81.4"
@@ -9811,6 +9837,7 @@ __metadata:
     "@react-native-vector-icons/common": "npm:^12.3.0"
     "@react-native-vector-icons/ionicons": "npm:^12.3.0"
     "@react-native-vector-icons/material-design-icons": "npm:^12.3.0"
+    "@react-native/metro-config": "npm:0.81.4"
     "@react-navigation/native": "npm:^7.1.17"
     "@react-navigation/native-stack": "npm:^7.3.26"
     "@sentry/react-native": "npm:^7.1.0"

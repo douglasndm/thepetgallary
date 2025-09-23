@@ -54,6 +54,7 @@
 		"uuid": "^13.0.0"
 	},
 	"devDependencies": {
+		"@react-native/metro-config": "0.81.4",
 		"@types/react": "~19.1.10",
 		"@types/react-native-get-random-values": "^1",
 		"eas-build-cache-provider": "^16.4.2",
