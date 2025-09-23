@@ -5,7 +5,6 @@ import {
 } from '@react-navigation/native';
 import * as Sentry from '@sentry/react-native';
 import { getAnalytics } from '@react-native-firebase/analytics';
-import { SystemBars } from 'react-native-edge-to-edge';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PaperProvider } from 'react-native-paper';
@@ -80,7 +79,6 @@ const App: React.FC = () => {
 					<CurrentPhotoContext.Provider
 						value={{ currentPhoto, setCurrentPhoto }}
 					>
-						<SystemBars style="dark" hidden={false} />
 						{!isInternetReachable && <NoInternet />}
 						<Notifications />
 						<Routes />
