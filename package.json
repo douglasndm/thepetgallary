@@ -60,7 +60,6 @@
 		"eslint-plugin-prettier": "^5.5.4",
 		"prettier": "3.6.2",
 		"react-native-svg-transformer": "^1.5.1",
-		"reactotron-react-native": "^5.1.13",
 		"tsx": "^4.20.5",
 		"typescript": "~5.9.2"
 	},
