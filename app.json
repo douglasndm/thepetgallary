@@ -1,4 +1,7 @@
 {
   "name": "thepetgallery",
-  "displayName": "thepetgallery"
+  "displayName": "thepetgallery",
+  "android": {
+    "package": "com.douglasndm.thepetgallery"
+  }
 }
