@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components/native';
 import { Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from '@react-native-vector-icons/ionicons';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled(SafeAreaView)`
 	flex-direction: row;
 	align-items: center;
 	margin: 15px 10px 0;
