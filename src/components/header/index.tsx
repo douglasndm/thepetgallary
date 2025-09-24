@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { getAuth } from '@react-native-firebase/auth';
@@ -20,6 +21,7 @@ const catLogo = Platform.select({
 });
 
 const Header: React.FC = () => {
+	const insets = useSafeAreaInsets();
 	const { name } = useRoute<RouteProp<AppRoutes>>();
 	const { navigate, canGoBack, goBack } =
 		useNavigation<NativeStackNavigationProp<AppRoutes>>();
@@ -31,7 +33,7 @@ const Header: React.FC = () => {
 	}, [navigate]);
 
 	return (
-		<Container>
+		<Container style={{ paddingTop: insets.top }}>
 			{canGoBack() && (
 				<ButtonIcon onPress={goBack}>
 					<Icon name="arrow-back" />
