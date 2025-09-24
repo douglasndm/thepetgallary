@@ -1,4 +1,8 @@
-import auth, { getAuth, FirebaseAuthTypes } from '@react-native-firebase/auth';
+import {
+	getAuth,
+	FirebaseAuthTypes,
+	GoogleAuthProvider,
+} from '@react-native-firebase/auth';
 import {
 	GoogleSignin,
 	isSuccessResponse,
@@ -29,7 +33,7 @@ async function signInWithGoogle(): Promise<FirebaseAuthTypes.UserCredential> {
 			}
 
 			// Create a Google credential with the token
-			const googleCredential = auth.GoogleAuthProvider.credential(
+			const googleCredential = GoogleAuthProvider.credential(
 				signInResult.data.idToken
 			);
 

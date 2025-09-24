@@ -1,4 +1,9 @@
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import {
+	getAuth,
+	signInWithCredential,
+	FirebaseAuthTypes,
+	AppleAuthProvider,
+} from '@react-native-firebase/auth';
 import {
 	appleAuth,
 	appleAuthAndroid,
@@ -22,13 +27,10 @@ async function signInWithApple(): Promise<FirebaseAuthTypes.UserCredential> {
 
 	// Create a Firebase credential from the response
 	const { identityToken, nonce } = appleAuthRequestResponse;
-	const appleCredential = auth.AppleAuthProvider.credential(
-		identityToken,
-		nonce
-	);
+	const appleCredential = AppleAuthProvider.credential(identityToken, nonce);
 
 	// Sign the user in with the credential
-	return auth().signInWithCredential(appleCredential);
+	return signInWithCredential(getAuth(), appleCredential);
 }
 
 async function signInWithAppleAndroid(): Promise<FirebaseAuthTypes.UserCredential> {
@@ -70,10 +72,10 @@ async function signInWithAppleAndroid(): Promise<FirebaseAuthTypes.UserCredentia
 		throw new Error('Apple Sign-In failed - no identify token returned');
 	}
 
-	const appleCredential = auth.AppleAuthProvider.credential(id_token, nonce);
+	const appleCredential = AppleAuthProvider.credential(id_token, nonce);
 
 	// Sign the user in with the credential
-	return auth().signInWithCredential(appleCredential);
+	return signInWithCredential(getAuth(), appleCredential);
 }
 
 export { signInWithApple, signInWithAppleAndroid };
