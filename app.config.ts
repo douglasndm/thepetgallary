@@ -3,6 +3,7 @@ import 'dotenv/config';
 import { ExpoConfig, ConfigContext } from 'expo/config';
 
 import pluginsConfigs from './configs/expo/plugins';
+import extraConfigs from './configs/expo/extra';
 
 import { version } from './package.json';
 
@@ -32,6 +33,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	},
 
 	plugins: pluginsConfigs,
+	extra: extraConfigs,
 
 	buildCacheProvider: 'eas',
 });
