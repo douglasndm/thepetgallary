@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import { getMessaging } from '@react-native-firebase/messaging';
+import { getMessaging, onMessage } from '@react-native-firebase/messaging';
 import { showMessage } from 'react-native-flash-message';
 
 const notification: React.FC = () => {
 	useEffect(() => {
-		const unsubscribe = getMessaging().onMessage(async remoteMessage => {
+		const unsubscribe = onMessage(getMessaging(), async remoteMessage => {
 			if (remoteMessage.notification) {
 				const { title, body } = remoteMessage.notification;
 

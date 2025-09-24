@@ -1,6 +1,7 @@
 import { PermissionsAndroid, Platform } from 'react-native';
 import {
 	getMessaging,
+	requestPermission,
 	FirebaseMessagingTypes,
 } from '@react-native-firebase/messaging';
 
@@ -11,7 +12,7 @@ async function requestUserPermission() {
 		);
 	}
 
-	const authStatus = await getMessaging().requestPermission();
+	const authStatus = await requestPermission(getMessaging());
 	const enabled =
 		authStatus === FirebaseMessagingTypes.AuthorizationStatus.AUTHORIZED ||
 		authStatus === FirebaseMessagingTypes.AuthorizationStatus.PROVISIONAL;
