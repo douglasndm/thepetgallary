@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { NativeSyntheticEvent } from 'react-native';
+import { Platform, NativeSyntheticEvent } from 'react-native';
 import ContextMenu, {
 	ContextMenuOnPressNativeEvent,
 } from 'react-native-context-menu-view';
@@ -11,11 +11,18 @@ import { saveImageOnGallery } from '@utils/images/save';
 
 import CurrentPhotoContext from '@contexts/currentPhoto';
 
-const dogLoading = require('@animations/dog_loading.lottie');
-const catLoading = require('@animations/cat_loading.lottie');
-
 import { Container, Photo } from '../styles';
 import { PhotoContainer, lottieStyle } from './styles';
+
+const dogLoading = Platform.select({
+	ios: require('@animations/dog_loading.lottie'),
+	android: require('@animations/android/dog_loading.zip'),
+});
+
+const catLoading = Platform.select({
+	ios: require('@animations/cat_loading.lottie'),
+	android: require('@animations/android/cat_loading.zip'),
+});
 
 interface Props {
 	item: APIItem;

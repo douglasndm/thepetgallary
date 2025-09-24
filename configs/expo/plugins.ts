@@ -12,5 +12,11 @@ const configs: plugins = [
 			organization: 'douglasndm',
 		},
 	],
+	[
+		'expo-asset',
+		{
+			assets: ['./assets/animations/', './assets/images/'],
+		},
+	],
 ];
 export default configs;

@@ -1,10 +1,9 @@
 import React, { useCallback, useRef } from 'react';
+import { Platform } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { getAuth } from '@react-native-firebase/auth';
 import LottieView from 'lottie-react-native';
-
-import catLogo from '@animations/cat_logo.lottie';
 
 import {
 	Container,
@@ -14,6 +13,11 @@ import {
 	ButtonIcon,
 	Icon,
 } from './styles';
+
+const catLogo = Platform.select({
+	ios: require('@animations/cat_logo.lottie'),
+	android: require('@animations/android/cat_logo.zip'),
+});
 
 const Header: React.FC = () => {
 	const { name } = useRoute<RouteProp<AppRoutes>>();

@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
-import { Linking } from 'react-native';
+import { Platform, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { getAuth } from '@react-native-firebase/auth';
 import LottieView from 'lottie-react-native';
-
-import dogDancing from '@animations/dog_dancing.lottie';
 
 import Header from '@components/header';
 import Button from '@components/button';
@@ -21,6 +19,11 @@ import {
 	Attibution,
 	AttibutionLink,
 } from './styles';
+
+const dogDancing = Platform.select({
+	ios: require('@animations/dog_dancing.lottie'),
+	android: require('@animations/android/dog_dancing.zip'),
+});
 
 const Menu: React.FC = () => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<AppRoutes>>();
@@ -46,6 +49,9 @@ const Menu: React.FC = () => {
 						height: 250,
 						marginTop: 30,
 						alignSelf: 'center',
+					}}
+					onAnimationFailure={error => {
+						console.log(error);
 					}}
 					autoPlay
 					loop

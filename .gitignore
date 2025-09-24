@@ -3,8 +3,8 @@
 google-services.json
 GoogleService-Info.plist
 
-android/
-ios/
+/android/
+/ios/
 
 sentry.properties
 
