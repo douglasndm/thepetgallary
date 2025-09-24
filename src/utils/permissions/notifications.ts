@@ -13,13 +13,6 @@ async function requestUserPermission() {
 	}
 
 	const authStatus = await requestPermission(getMessaging());
-	const enabled =
-		authStatus === FirebaseMessagingTypes.AuthorizationStatus.AUTHORIZED ||
-		authStatus === FirebaseMessagingTypes.AuthorizationStatus.PROVISIONAL;
-
-	if (enabled) {
-		console.log('Authorization status:', authStatus);
-	}
 }
 
 requestUserPermission();
